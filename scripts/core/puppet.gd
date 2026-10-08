@@ -97,6 +97,11 @@ func snap_pose(pose_name: String) -> void:
 	queue_redraw()
 
 
+## Body girth multiplier from the look's build.
+func girth() -> float:
+	return _w
+
+
 ## Height of the head top above the feet, in local pixels.
 func height() -> float:
 	return (THIGH + SHIN + TORSO + NECK + 40.0) * _h

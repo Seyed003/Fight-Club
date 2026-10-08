@@ -16,6 +16,12 @@ var amb_db := -8.0
 var t := 0.0
 
 
+## Called after a property changes (e.g. from `@set_loc`), before the
+## stage re-reads ambient and lights.
+func refresh() -> void:
+	pass
+
+
 ## Each light: {pos, radius, color, energy, flicker (0..1), swing (rad), swing_speed, length}
 func lights() -> Array:
 	return []

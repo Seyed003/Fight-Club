@@ -407,6 +407,7 @@ func _exec(step: Dictionary) -> void:
 		"set_loc":
 			if a.size() >= 2 and a[0] in stage.loc:
 				stage.loc.set(a[0], _parse_value(a[1]))
+				stage.refresh_location()
 		"game", "qte":
 			dialogue.hide_box()
 			await _flush_fade()

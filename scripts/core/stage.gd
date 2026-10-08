@@ -58,6 +58,7 @@ func set_location(loc_id: String) -> void:
 		path = LOCATION_PATH % "black"
 	loc = load(path).new()
 	loc.id = loc_id
+	loc.refresh()
 	if fx != null:
 		fx.clear()
 		fx.floor_y = loc.floor_y
@@ -75,6 +76,18 @@ func set_location(loc_id: String) -> void:
 		_anim.queue_redraw()
 		_front.queue_redraw()
 	reset_camera()
+
+
+## Re-applies a location's look after one of its properties changed.
+func refresh_location() -> void:
+	if loc == null:
+		return
+	loc.refresh()
+	_modulate.color = loc.ambient
+	_build_lights()
+	_back.queue_redraw()
+	_anim.queue_redraw()
+	_front.queue_redraw()
 
 
 func floor_y() -> float:

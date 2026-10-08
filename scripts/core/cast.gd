@@ -1,0 +1,262 @@
+class_name Cast
+extends RefCounted
+## Every character's look and display name.
+##
+## A look is a flat dictionary read by Puppet. Variants of the same person
+## (office shirt, fight night, final night) share a `who` so dialogue lines
+## resolve to one name.
+
+const SKIN_PALE := Color(0.86, 0.73, 0.64)
+const SKIN_FAIR := Color(0.9, 0.76, 0.66)
+const SKIN_TAN := Color(0.80, 0.62, 0.50)
+const SKIN_RUDDY := Color(0.86, 0.64, 0.56)
+const SKIN_OLIVE := Color(0.72, 0.56, 0.44)
+const SKIN_BROWN := Color(0.52, 0.36, 0.27)
+const SKIN_DARK := Color(0.36, 0.25, 0.19)
+
+const NAMES := {
+	"jack": {"fa": "راوی", "en": "Narrator", "color": Color(0.84, 0.86, 0.80)},
+	"tyler": {"fa": "تایلر", "en": "Tyler", "color": Color(0.93, 0.42, 0.36)},
+	"marla": {"fa": "مارلا", "en": "Marla", "color": Color(0.74, 0.70, 0.90)},
+	"bob": {"fa": "باب", "en": "Bob", "color": Color(0.90, 0.78, 0.52)},
+	"angel": {"fa": "انجل فیس", "en": "Angel Face", "color": Color(0.96, 0.88, 0.58)},
+	"lou": {"fa": "لو", "en": "Lou", "color": Color(0.78, 0.66, 0.56)},
+	"boss": {"fa": "رئیس", "en": "The Boss", "color": Color(0.66, 0.76, 0.86)},
+	"doctor": {"fa": "دکتر", "en": "Doctor", "color": Color(0.76, 0.86, 0.84)},
+	"chloe": {"fa": "کلویی", "en": "Chloe", "color": Color(0.86, 0.76, 0.82)},
+	"leader": {"fa": "سرپرست گروه", "en": "Group Leader", "color": Color(0.74, 0.80, 0.70)},
+	"thomas": {"fa": "توماس", "en": "Thomas", "color": Color(0.74, 0.80, 0.70)},
+	"woman": {"fa": "زنِ صندلی کناری", "en": "Woman in the next seat", "color": Color(0.84, 0.80, 0.72)},
+	"attendant": {"fa": "مهماندار", "en": "Flight Attendant", "color": Color(0.84, 0.80, 0.72)},
+	"pilot": {"fa": "صدای خلبان", "en": "Captain", "color": Color(0.70, 0.76, 0.80)},
+	"doorman": {"fa": "نگهبان ساختمان", "en": "Doorman", "color": Color(0.74, 0.74, 0.70)},
+	"detective": {"fa": "کارآگاه", "en": "Detective", "color": Color(0.66, 0.72, 0.80)},
+	"stern": {"fa": "کارآگاه استرن", "en": "Detective Stern", "color": Color(0.66, 0.72, 0.80)},
+	"raymond": {"fa": "ریموند", "en": "Raymond", "color": Color(0.86, 0.78, 0.66)},
+	"bartender": {"fa": "متصدی بار", "en": "Bartender", "color": Color(0.80, 0.74, 0.62)},
+	"monkey": {"fa": "میمون فضایی", "en": "Space Monkey", "color": Color(0.62, 0.66, 0.62)},
+	"mechanic": {"fa": "مکانیک", "en": "The Mechanic", "color": Color(0.70, 0.74, 0.66)},
+	"ricky": {"fa": "ریکی", "en": "Ricky", "color": Color(0.74, 0.70, 0.62)},
+	"commissioner": {"fa": "کمیسر پلیس", "en": "Police Commissioner", "color": Color(0.66, 0.72, 0.80)},
+	"guard": {"fa": "نگهبان", "en": "Security Guard", "color": Color(0.70, 0.72, 0.76)},
+	"member": {"fa": "عضو باشگاه", "en": "Club Member", "color": Color(0.74, 0.70, 0.62)},
+	"stranger": {"fa": "غریبه", "en": "Stranger", "color": Color(0.74, 0.70, 0.62)},
+	"crowd": {"fa": "جمعیت", "en": "Crowd", "color": Color(0.80, 0.70, 0.60)},
+	"penguin": {"fa": "پنگوئن", "en": "Penguin", "color": Color(0.80, 0.90, 0.96)},
+	"receptionist": {"fa": "منشی", "en": "Receptionist", "color": Color(0.84, 0.80, 0.72)},
+	"clerk": {"fa": "فروشنده", "en": "Store Clerk", "color": Color(0.84, 0.80, 0.72)},
+	"buyer": {"fa": "مسئول خرید فروشگاه", "en": "Store Buyer", "color": Color(0.84, 0.80, 0.72)},
+	"waiter": {"fa": "پیشخدمت", "en": "Waiter", "color": Color(0.84, 0.80, 0.72)},
+	"cop": {"fa": "پلیس", "en": "Officer", "color": Color(0.66, 0.72, 0.80)},
+	"voice": {"fa": "صدا", "en": "Voice", "color": Color(0.80, 0.80, 0.80)},
+	"tv": {"fa": "تلویزیون", "en": "TV", "color": Color(0.70, 0.80, 0.84)},
+	"radio": {"fa": "رادیو", "en": "Radio", "color": Color(0.70, 0.80, 0.84)},
+	"marla_phone": {"fa": "مارلا (تلفن)", "en": "Marla (phone)", "color": Color(0.74, 0.70, 0.90)},
+	"tyler_phone": {"fa": "تایلر (تلفن)", "en": "Tyler (phone)", "color": Color(0.93, 0.42, 0.36)},
+}
+
+const LOOKS := {
+	# The narrator. Starts pressed and pale, ends bruised and gaunt.
+	"jack_office": {"who": "jack", "skin": SKIN_PALE, "hair": Color(0.30, 0.22, 0.16), "hair_style": "neat",
+		"top": "shirt", "top_color": Color(0.80, 0.84, 0.86), "sleeves": "long", "tie": Color(0.20, 0.24, 0.34),
+		"pants_color": Color(0.26, 0.27, 0.29), "shoes_color": Color(0.09, 0.08, 0.08), "build": {"w": 0.95}},
+	"jack_coat": {"who": "jack", "skin": SKIN_PALE, "hair": Color(0.30, 0.22, 0.16), "hair_style": "neat",
+		"top": "overcoat", "top_color": Color(0.30, 0.31, 0.30), "top_color2": Color(0.80, 0.84, 0.86), "sleeves": "long",
+		"tie": Color(0.20, 0.24, 0.34), "pants_color": Color(0.26, 0.27, 0.29), "shoes_color": Color(0.09, 0.08, 0.08),
+		"build": {"w": 0.95}, "prop": "briefcase"},
+	"jack_casual": {"who": "jack", "skin": SKIN_PALE, "hair": Color(0.30, 0.22, 0.16), "hair_style": "messy_short",
+		"top": "tshirt", "top_color": Color(0.62, 0.64, 0.60), "sleeves": "short",
+		"pants_color": Color(0.24, 0.24, 0.26), "shoes_color": Color(0.10, 0.09, 0.08), "build": {"w": 0.95}},
+	"jack_fight": {"who": "jack", "skin": SKIN_PALE, "hair": Color(0.30, 0.22, 0.16), "hair_style": "messy_short",
+		"top": "none", "sleeves": "none", "pants_color": Color(0.26, 0.27, 0.29), "shoes_color": Color(0, 0, 0, 0),
+		"barefoot": true, "build": {"w": 0.95, "muscle": 0.2}},
+	"jack_robe": {"who": "jack", "skin": SKIN_PALE, "hair": Color(0.30, 0.22, 0.16), "hair_style": "messy_short",
+		"top": "robe", "top_color": Color(0.36, 0.38, 0.42), "sleeves": "long", "pants_color": Color(0.80, 0.80, 0.78),
+		"barefoot": true, "build": {"w": 0.95}},
+	"jack_final": {"who": "jack", "skin": Color(0.82, 0.69, 0.60), "hair": Color(0.30, 0.22, 0.16), "hair_style": "messy_short",
+		"top": "tank", "top_color": Color(0.82, 0.82, 0.76), "sleeves": "none", "pants_color": Color(0.70, 0.68, 0.62),
+		"barefoot": true, "build": {"w": 0.92}, "bruise": 0.6, "blood": 0.3},
+
+	# Tyler Durden. The red leather jacket is the one constant.
+	"tyler": {"who": "tyler", "skin": SKIN_TAN, "hair": Color(0.62, 0.48, 0.30), "hair_style": "slick",
+		"top": "jacket", "top_color": Color(0.62, 0.10, 0.08), "top_color2": Color(0.86, 0.66, 0.36), "sleeves": "long",
+		"pants_color": Color(0.30, 0.24, 0.20), "shoes_color": Color(0.20, 0.12, 0.08), "build": {"w": 1.0, "muscle": 0.6}},
+	"tyler_shades": {"who": "tyler", "skin": SKIN_TAN, "hair": Color(0.62, 0.48, 0.30), "hair_style": "slick",
+		"top": "jacket", "top_color": Color(0.62, 0.10, 0.08), "top_color2": Color(0.86, 0.66, 0.36), "sleeves": "long",
+		"pants_color": Color(0.30, 0.24, 0.20), "shoes_color": Color(0.20, 0.12, 0.08), "glasses": "sun", "build": {"w": 1.0, "muscle": 0.6}},
+	"tyler_fight": {"who": "tyler", "skin": SKIN_TAN, "hair": Color(0.62, 0.48, 0.30), "hair_style": "slick",
+		"top": "none", "sleeves": "none", "pants_color": Color(0.36, 0.30, 0.26), "barefoot": true,
+		"build": {"w": 1.0, "muscle": 1.0}},
+	"tyler_robe": {"who": "tyler", "skin": SKIN_TAN, "hair": Color(0.62, 0.48, 0.30), "hair_style": "messy_short",
+		"top": "robe", "top_color": Color(0.90, 0.60, 0.68), "sleeves": "long", "pants_color": SKIN_TAN, "barefoot": true,
+		"build": {"w": 1.0, "muscle": 0.6}},
+	"tyler_waiter": {"who": "tyler", "skin": SKIN_TAN, "hair": Color(0.62, 0.48, 0.30), "hair_style": "slick",
+		"top": "waiter", "top_color": Color(0.92, 0.92, 0.88), "sleeves": "long", "tie": Color(0.08, 0.08, 0.08),
+		"pants_color": Color(0.08, 0.08, 0.09), "shoes_color": Color(0.05, 0.05, 0.05), "build": {"w": 1.0, "muscle": 0.6}},
+	"tyler_plane": {"who": "tyler", "skin": SKIN_TAN, "hair": Color(0.62, 0.48, 0.30), "hair_style": "slick",
+		"top": "jacket", "top_color": Color(0.62, 0.10, 0.08), "top_color2": Color(0.92, 0.70, 0.40), "sleeves": "long",
+		"pants_color": Color(0.30, 0.24, 0.20), "shoes_color": Color(0.20, 0.12, 0.08), "glasses": "sun",
+		"build": {"w": 1.0, "muscle": 0.6}, "prop": "briefcase"},
+
+	"marla": {"who": "marla", "skin": Color(0.88, 0.78, 0.72), "hair": Color(0.10, 0.08, 0.07), "hair_style": "messy_long",
+		"top": "fur", "top_color": Color(0.30, 0.28, 0.27), "top_color2": Color(0.10, 0.09, 0.10), "sleeves": "long",
+		"legwear": "dress", "pants_color": Color(0.08, 0.07, 0.08), "shoes_color": Color(0.05, 0.05, 0.05),
+		"glasses": "sun", "lips": Color(0.42, 0.10, 0.14), "build": {"w": 0.78, "h": 0.94, "female": 1.0}, "prop": "cigarette"},
+	"marla_noglasses": {"who": "marla", "skin": Color(0.88, 0.78, 0.72), "hair": Color(0.10, 0.08, 0.07), "hair_style": "messy_long",
+		"top": "fur", "top_color": Color(0.30, 0.28, 0.27), "top_color2": Color(0.10, 0.09, 0.10), "sleeves": "long",
+		"legwear": "dress", "pants_color": Color(0.08, 0.07, 0.08), "shoes_color": Color(0.05, 0.05, 0.05),
+		"lips": Color(0.42, 0.10, 0.14), "build": {"w": 0.78, "h": 0.94, "female": 1.0}, "prop": "cigarette"},
+	"marla_dress": {"who": "marla", "skin": Color(0.88, 0.78, 0.72), "hair": Color(0.10, 0.08, 0.07), "hair_style": "messy_long",
+		"top": "dress", "top_color": Color(0.16, 0.12, 0.14), "sleeves": "none", "legwear": "dress",
+		"pants_color": Color(0.16, 0.12, 0.14), "shoes_color": Color(0.05, 0.05, 0.05), "lips": Color(0.42, 0.10, 0.14),
+		"build": {"w": 0.78, "h": 0.94, "female": 1.0}},
+
+	"bob": {"who": "bob", "skin": SKIN_RUDDY, "hair": Color(0.66, 0.52, 0.34), "hair_style": "long",
+		"top": "sweater", "top_color": Color(0.46, 0.36, 0.28), "sleeves": "long", "pants_color": Color(0.46, 0.42, 0.34),
+		"shoes_color": Color(0.18, 0.13, 0.10), "build": {"w": 1.65, "h": 1.06, "chest": 1.0, "belly": 0.8}},
+	"bob_fight": {"who": "bob", "skin": SKIN_RUDDY, "hair": Color(0.66, 0.52, 0.34), "hair_style": "long",
+		"top": "none", "sleeves": "none", "pants_color": Color(0.40, 0.38, 0.32), "barefoot": true,
+		"build": {"w": 1.65, "h": 1.06, "chest": 1.0, "belly": 0.8}},
+	"bob_monkey": {"who": "bob", "skin": SKIN_RUDDY, "hair": Color(0.66, 0.52, 0.34), "hair_style": "shaved",
+		"top": "shirt", "top_color": Color(0.08, 0.08, 0.08), "sleeves": "long", "pants_color": Color(0.08, 0.08, 0.08),
+		"shoes_color": Color(0.04, 0.04, 0.04), "build": {"w": 1.65, "h": 1.06, "chest": 1.0, "belly": 0.8}},
+
+	"angel": {"who": "angel", "skin": SKIN_FAIR, "hair": Color(0.92, 0.82, 0.52), "hair_style": "spiky",
+		"top": "tshirt", "top_color": Color(0.88, 0.86, 0.80), "sleeves": "short", "pants_color": Color(0.30, 0.34, 0.44),
+		"shoes_color": Color(0.10, 0.10, 0.10), "build": {"w": 0.92, "muscle": 0.5}},
+	"angel_fight": {"who": "angel", "skin": SKIN_FAIR, "hair": Color(0.92, 0.82, 0.52), "hair_style": "spiky",
+		"top": "none", "sleeves": "none", "pants_color": Color(0.30, 0.34, 0.44), "barefoot": true,
+		"build": {"w": 0.92, "muscle": 0.8}},
+	"angel_monkey": {"who": "angel", "skin": SKIN_FAIR, "hair": Color(0.92, 0.82, 0.52), "hair_style": "shaved",
+		"top": "shirt", "top_color": Color(0.08, 0.08, 0.08), "sleeves": "long", "pants_color": Color(0.08, 0.08, 0.08),
+		"shoes_color": Color(0.04, 0.04, 0.04), "build": {"w": 0.92, "muscle": 0.5}},
+
+	"lou": {"who": "lou", "skin": SKIN_RUDDY, "hair": Color(0.60, 0.58, 0.56), "hair_style": "receding",
+		"top": "suit", "top_color": Color(0.22, 0.20, 0.20), "top_color2": Color(0.70, 0.66, 0.62), "sleeves": "long",
+		"pants_color": Color(0.20, 0.19, 0.19), "shoes_color": Color(0.05, 0.05, 0.05), "mustache": true,
+		"build": {"w": 1.4, "h": 1.0, "belly": 0.7}},
+	"boss": {"who": "boss", "skin": SKIN_PALE, "hair": Color(0.18, 0.14, 0.12), "hair_style": "slick",
+		"top": "suit", "top_color": Color(0.32, 0.33, 0.36), "top_color2": Color(0.86, 0.86, 0.84), "sleeves": "long",
+		"tie": Color(0.46, 0.14, 0.14), "pants_color": Color(0.30, 0.31, 0.34), "shoes_color": Color(0.05, 0.05, 0.05),
+		"glasses": "clear", "mustache": true, "build": {"w": 1.1}},
+	"doctor": {"who": "doctor", "skin": SKIN_OLIVE, "hair": Color(0.20, 0.18, 0.16), "hair_style": "receding",
+		"top": "labcoat", "top_color": Color(0.90, 0.91, 0.90), "top_color2": Color(0.56, 0.62, 0.70), "sleeves": "long",
+		"tie": Color(0.30, 0.20, 0.30), "pants_color": Color(0.30, 0.30, 0.32), "shoes_color": Color(0.08, 0.06, 0.05),
+		"glasses": "clear", "build": {"w": 1.05}},
+	"chloe": {"who": "chloe", "skin": Color(0.86, 0.80, 0.76), "hair": Color(0.50, 0.40, 0.34), "hair_style": "wig",
+		"top": "cardigan", "top_color": Color(0.56, 0.52, 0.60), "sleeves": "long", "legwear": "dress",
+		"pants_color": Color(0.36, 0.32, 0.38), "shoes_color": Color(0.20, 0.16, 0.14), "build": {"w": 0.68, "h": 0.92, "female": 1.0}},
+	"leader": {"who": "leader", "skin": SKIN_FAIR, "hair": Color(0.46, 0.36, 0.26), "hair_style": "neat",
+		"top": "sweater", "top_color": Color(0.36, 0.42, 0.40), "sleeves": "long", "pants_color": Color(0.40, 0.36, 0.30),
+		"shoes_color": Color(0.14, 0.11, 0.09), "glasses": "clear", "build": {"w": 1.05}},
+	"thomas": {"who": "thomas", "skin": SKIN_OLIVE, "hair": Color(0.16, 0.13, 0.11), "hair_style": "neat",
+		"top": "sweater", "top_color": Color(0.30, 0.30, 0.34), "sleeves": "long", "pants_color": Color(0.32, 0.30, 0.28),
+		"shoes_color": Color(0.14, 0.11, 0.09), "build": {"w": 1.0}},
+	"man_group": {"who": "member", "skin": SKIN_FAIR, "hair": Color(0.40, 0.32, 0.24), "hair_style": "receding",
+		"top": "sweater", "top_color": Color(0.38, 0.34, 0.30), "sleeves": "long", "pants_color": Color(0.32, 0.32, 0.30),
+		"shoes_color": Color(0.14, 0.11, 0.09), "build": {"w": 1.15, "belly": 0.4}},
+	"woman_plane": {"who": "woman", "skin": SKIN_FAIR, "hair": Color(0.56, 0.42, 0.26), "hair_style": "bob",
+		"top": "blouse", "top_color": Color(0.64, 0.58, 0.52), "sleeves": "long", "legwear": "dress",
+		"pants_color": Color(0.30, 0.28, 0.28), "shoes_color": Color(0.12, 0.10, 0.10), "build": {"w": 0.85, "h": 0.94, "female": 1.0}},
+	"attendant": {"who": "attendant", "skin": SKIN_FAIR, "hair": Color(0.70, 0.56, 0.34), "hair_style": "bun",
+		"top": "suit", "top_color": Color(0.20, 0.24, 0.36), "top_color2": Color(0.90, 0.90, 0.88), "sleeves": "long",
+		"legwear": "dress", "pants_color": Color(0.20, 0.24, 0.36), "shoes_color": Color(0.05, 0.05, 0.05),
+		"build": {"w": 0.82, "h": 0.95, "female": 1.0}},
+	"passenger": {"who": "stranger", "skin": SKIN_FAIR, "hair": Color(0.36, 0.30, 0.24), "hair_style": "neat",
+		"top": "suit", "top_color": Color(0.26, 0.28, 0.30), "top_color2": Color(0.86, 0.86, 0.84), "sleeves": "long",
+		"tie": Color(0.30, 0.20, 0.20), "pants_color": Color(0.26, 0.28, 0.30), "shoes_color": Color(0.05, 0.05, 0.05)},
+	"doorman": {"who": "doorman", "skin": SKIN_BROWN, "hair": Color(0.12, 0.10, 0.09), "hair_style": "cap",
+		"top": "uniform", "top_color": Color(0.24, 0.24, 0.30), "sleeves": "long", "pants_color": Color(0.20, 0.20, 0.25),
+		"shoes_color": Color(0.05, 0.05, 0.05), "build": {"w": 1.1}},
+	"detective": {"who": "detective", "skin": SKIN_FAIR, "hair": Color(0.28, 0.22, 0.18), "hair_style": "receding",
+		"top": "suit", "top_color": Color(0.36, 0.33, 0.28), "top_color2": Color(0.84, 0.82, 0.76), "sleeves": "long",
+		"tie": Color(0.26, 0.22, 0.30), "pants_color": Color(0.34, 0.31, 0.27), "shoes_color": Color(0.10, 0.08, 0.06),
+		"mustache": true, "build": {"w": 1.15, "belly": 0.3}},
+	"detective2": {"who": "detective", "skin": SKIN_BROWN, "hair": Color(0.10, 0.08, 0.07), "hair_style": "buzz",
+		"top": "suit", "top_color": Color(0.24, 0.24, 0.26), "top_color2": Color(0.80, 0.80, 0.78), "sleeves": "long",
+		"tie": Color(0.18, 0.18, 0.22), "pants_color": Color(0.22, 0.22, 0.24), "shoes_color": Color(0.05, 0.05, 0.05),
+		"build": {"w": 1.1}},
+	"cop": {"who": "cop", "skin": SKIN_FAIR, "hair": Color(0.20, 0.16, 0.12), "hair_style": "cap",
+		"top": "uniform", "top_color": Color(0.14, 0.18, 0.28), "sleeves": "long", "pants_color": Color(0.12, 0.14, 0.22),
+		"shoes_color": Color(0.03, 0.03, 0.03), "build": {"w": 1.1}},
+	"raymond": {"who": "raymond", "skin": SKIN_FAIR, "hair": Color(0.32, 0.26, 0.20), "hair_style": "messy_short",
+		"top": "apron", "top_color": Color(0.60, 0.14, 0.14), "top_color2": Color(0.86, 0.84, 0.80), "sleeves": "short",
+		"pants_color": Color(0.30, 0.28, 0.26), "shoes_color": Color(0.20, 0.20, 0.22), "build": {"w": 0.85}, "glasses": "clear"},
+	"bartender": {"who": "bartender", "skin": SKIN_FAIR, "hair": Color(0.20, 0.16, 0.12), "hair_style": "receding",
+		"top": "vest", "top_color": Color(0.14, 0.13, 0.14), "top_color2": Color(0.86, 0.84, 0.80), "sleeves": "long",
+		"pants_color": Color(0.12, 0.12, 0.13), "shoes_color": Color(0.05, 0.05, 0.05), "build": {"w": 1.1, "belly": 0.3}},
+	"bartender2": {"who": "bartender", "skin": SKIN_DARK, "hair": Color(0.08, 0.07, 0.06), "hair_style": "shaved",
+		"top": "tshirt", "top_color": Color(0.20, 0.20, 0.22), "sleeves": "short", "pants_color": Color(0.14, 0.14, 0.16),
+		"shoes_color": Color(0.05, 0.05, 0.05), "build": {"w": 1.2, "muscle": 0.6}, "bruise": 0.4},
+	"monkey1": {"who": "monkey", "skin": SKIN_FAIR, "hair": Color(0.30, 0.24, 0.18), "hair_style": "shaved",
+		"top": "shirt", "top_color": Color(0.08, 0.08, 0.08), "sleeves": "long", "pants_color": Color(0.08, 0.08, 0.08),
+		"shoes_color": Color(0.03, 0.03, 0.03)},
+	"monkey2": {"who": "monkey", "skin": SKIN_BROWN, "hair": Color(0.08, 0.07, 0.06), "hair_style": "shaved",
+		"top": "shirt", "top_color": Color(0.08, 0.08, 0.08), "sleeves": "long", "pants_color": Color(0.08, 0.08, 0.08),
+		"shoes_color": Color(0.03, 0.03, 0.03), "build": {"w": 1.1}},
+	"monkey3": {"who": "monkey", "skin": SKIN_OLIVE, "hair": Color(0.10, 0.08, 0.07), "hair_style": "shaved",
+		"top": "shirt", "top_color": Color(0.08, 0.08, 0.08), "sleeves": "long", "pants_color": Color(0.08, 0.08, 0.08),
+		"shoes_color": Color(0.03, 0.03, 0.03), "build": {"w": 0.9}},
+	"monkey4": {"who": "monkey", "skin": SKIN_DARK, "hair": Color(0.08, 0.07, 0.06), "hair_style": "shaved",
+		"top": "shirt", "top_color": Color(0.08, 0.08, 0.08), "sleeves": "long", "pants_color": Color(0.08, 0.08, 0.08),
+		"shoes_color": Color(0.03, 0.03, 0.03), "build": {"w": 1.0, "muscle": 0.5}},
+	"mechanic": {"who": "mechanic", "skin": SKIN_FAIR, "hair": Color(0.30, 0.24, 0.18), "hair_style": "shaved",
+		"top": "shirt", "top_color": Color(0.08, 0.08, 0.08), "sleeves": "long", "pants_color": Color(0.08, 0.08, 0.08),
+		"shoes_color": Color(0.03, 0.03, 0.03), "build": {"w": 1.05, "muscle": 0.4}},
+	"ricky": {"who": "ricky", "skin": SKIN_FAIR, "hair": Color(0.50, 0.40, 0.28), "hair_style": "messy_short",
+		"top": "tshirt", "top_color": Color(0.40, 0.44, 0.38), "sleeves": "short", "pants_color": Color(0.24, 0.26, 0.30),
+		"shoes_color": Color(0.10, 0.10, 0.10), "build": {"w": 1.05}},
+	"member1": {"who": "member", "skin": SKIN_FAIR, "hair": Color(0.36, 0.28, 0.20), "hair_style": "messy_short",
+		"top": "none", "sleeves": "none", "pants_color": Color(0.30, 0.32, 0.36), "barefoot": true, "build": {"w": 1.05, "muscle": 0.5}},
+	"member2": {"who": "member", "skin": SKIN_BROWN, "hair": Color(0.08, 0.07, 0.06), "hair_style": "buzz",
+		"top": "none", "sleeves": "none", "pants_color": Color(0.22, 0.22, 0.24), "barefoot": true, "build": {"w": 1.15, "muscle": 0.8}},
+	"member3": {"who": "member", "skin": SKIN_OLIVE, "hair": Color(0.12, 0.10, 0.08), "hair_style": "neat",
+		"top": "none", "sleeves": "none", "pants_color": Color(0.34, 0.30, 0.24), "barefoot": true, "build": {"w": 0.95, "muscle": 0.4}},
+	"stranger": {"who": "stranger", "skin": SKIN_FAIR, "hair": Color(0.30, 0.24, 0.18), "hair_style": "neat",
+		"top": "suit", "top_color": Color(0.30, 0.30, 0.34), "top_color2": Color(0.86, 0.86, 0.84), "sleeves": "long",
+		"tie": Color(0.40, 0.30, 0.20), "pants_color": Color(0.30, 0.30, 0.34), "shoes_color": Color(0.05, 0.05, 0.05),
+		"build": {"w": 1.2, "belly": 0.3}},
+	"commissioner": {"who": "commissioner", "skin": SKIN_RUDDY, "hair": Color(0.66, 0.64, 0.62), "hair_style": "receding",
+		"top": "suit", "top_color": Color(0.10, 0.10, 0.12), "top_color2": Color(0.90, 0.90, 0.88), "sleeves": "long",
+		"tie": Color(0.08, 0.08, 0.08), "pants_color": Color(0.10, 0.10, 0.12), "shoes_color": Color(0.03, 0.03, 0.03),
+		"build": {"w": 1.25, "belly": 0.6}},
+	"guard": {"who": "guard", "skin": SKIN_BROWN, "hair": Color(0.10, 0.08, 0.07), "hair_style": "buzz",
+		"top": "uniform", "top_color": Color(0.30, 0.32, 0.36), "sleeves": "long", "pants_color": Color(0.16, 0.16, 0.20),
+		"shoes_color": Color(0.03, 0.03, 0.03), "build": {"w": 1.2}},
+	"receptionist": {"who": "receptionist", "skin": SKIN_FAIR, "hair": Color(0.60, 0.44, 0.28), "hair_style": "bob",
+		"top": "blouse", "top_color": Color(0.70, 0.66, 0.62), "sleeves": "long", "legwear": "dress",
+		"pants_color": Color(0.26, 0.26, 0.30), "shoes_color": Color(0.10, 0.08, 0.08), "build": {"w": 0.84, "h": 0.94, "female": 1.0}},
+	"buyer": {"who": "buyer", "skin": SKIN_FAIR, "hair": Color(0.46, 0.34, 0.24), "hair_style": "bob",
+		"top": "suit", "top_color": Color(0.46, 0.40, 0.44), "top_color2": Color(0.90, 0.88, 0.86), "sleeves": "long",
+		"legwear": "dress", "pants_color": Color(0.36, 0.32, 0.34), "shoes_color": Color(0.10, 0.08, 0.08),
+		"build": {"w": 0.84, "h": 0.94, "female": 1.0}},
+	"waiter": {"who": "waiter", "skin": SKIN_OLIVE, "hair": Color(0.12, 0.10, 0.08), "hair_style": "neat",
+		"top": "waiter", "top_color": Color(0.92, 0.92, 0.88), "sleeves": "long", "tie": Color(0.08, 0.08, 0.08),
+		"pants_color": Color(0.08, 0.08, 0.09), "shoes_color": Color(0.05, 0.05, 0.05)},
+	"clerk": {"who": "clerk", "skin": SKIN_FAIR, "hair": Color(0.50, 0.38, 0.26), "hair_style": "bun",
+		"top": "blouse", "top_color": Color(0.60, 0.62, 0.58), "sleeves": "long", "legwear": "dress",
+		"pants_color": Color(0.24, 0.24, 0.26), "shoes_color": Color(0.10, 0.08, 0.08), "build": {"w": 0.82, "h": 0.94, "female": 1.0}},
+}
+
+
+static func look(id: String) -> Dictionary:
+	if LOOKS.has(id):
+		return LOOKS[id]
+	push_warning("Cast: unknown look %s" % id)
+	return LOOKS["jack_office"]
+
+
+static func has_look(id: String) -> bool:
+	return LOOKS.has(id)
+
+
+static func display_name(who: String) -> String:
+	if NAMES.has(who):
+		return NAMES[who][Settings.lang]
+	return who
+
+
+static func name_color(who: String) -> Color:
+	if NAMES.has(who):
+		return NAMES[who]["color"]
+	return Color(0.85, 0.85, 0.8)

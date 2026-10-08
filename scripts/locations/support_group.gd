@@ -2,8 +2,20 @@ extends Location
 ## A church basement used by support groups: wood panels, folding chairs,
 ## a coffee urn, and a banner that changes with the group.
 
+## Which group meets tonight; sets the banner.
+var group := "rmt"
 var banner_text := "REMAINING MEN TOGETHER"
 var banner_color := Color(0.62, 0.52, 0.32)
+
+const GROUPS := {
+	"rmt": ["REMAINING MEN TOGETHER", Color(0.62, 0.52, 0.32)],
+	"tb": ["FREE AND CLEAR · TUBERCULOSIS", Color(0.5, 0.6, 0.66)],
+	"parasites": ["BLOOD PARASITES SUPPORT", Color(0.66, 0.42, 0.4)],
+	"dementia": ["ORGANIC BRAIN DEMENTIA", Color(0.5, 0.56, 0.42)],
+	"cancer": ["ASCENDING BOWEL CANCER", Color(0.6, 0.5, 0.62)],
+	"melanoma": ["MELANOMA · SEIZE THE DAY", Color(0.68, 0.6, 0.38)],
+	"meditation": ["GUIDED MEDITATION · FIND YOUR CAVE", Color(0.44, 0.56, 0.66)],
+}
 var chairs := [250.0, 400.0, 560.0, 720.0, 880.0, 1030.0]
 
 
@@ -13,6 +25,12 @@ func _init() -> void:
 	grade = "office"
 	amb = "fluorescent"
 	amb_db = -18.0
+
+
+func refresh() -> void:
+	if GROUPS.has(group):
+		banner_text = GROUPS[group][0]
+		banner_color = GROUPS[group][1]
 
 
 func lights() -> Array:

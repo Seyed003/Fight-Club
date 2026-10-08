@@ -1,0 +1,75 @@
+# Prologue: three minutes before the buildings come down.
+# The film opens at the end; so does this.
+
+@black
+@title
+@music tension fade=3
+@scene tower_top
+@actor jack look=jack_final x=600 pose=sit face=r expr=shock
+@actor tyler look=tyler x=780 pose=gun_aim face=l prop=gun expr=smirk
+@letterbox on
+@camera x=690 y=380 zoom=1.25 t=0
+
+narr: آدم‌ها همیشه از من می‌پرسند تایلر داردن را می‌شناسم یا نه.
+  en: People are always asking me if I know Tyler Durden.
+
+@wait 0.8
+@camera x=690 y=360 zoom=1.1 t=4
+
+tyler: سه دقیقه. همین است. نقطه‌ی صفر.
+  en: Three minutes. This is it. Ground zero.
+tyler: نمی‌خواهی به مناسبت این لحظه چند کلمه‌ای بگویی؟
+  en: Would you like to say a few words to mark the occasion?
+
+@choice
+@option vowels
+  fa: «...هیچی به فکرم نمی‌رسد.»
+  en: "...I can't think of anything."
+@option vowels
+  fa: «تمامش کن، تایلر.»
+  en: "Stop this, Tyler."
+@option vowels
+  fa: (سکوت)
+  en: (Say nothing.)
+@endchoice
+@label vowels
+
+jack: اِـ... آآ... اوو... اِیـ...
+  en: Iii... aaa... ooo... eee...
+narr: وقتی لوله‌ی تفنگ لای دندان‌هایت باشد، فقط صداهای کشیده از دهانت درمی‌آید.
+  en: With a gun barrel between your teeth, all you can manage are vowels.
+
+@pose tyler point
+tyler: به هیچ‌چیز فکر نکن. فقط نگاه کن.
+  en: Don't think about anything. Just watch.
+@pose tyler gun_aim
+
+narr: از بالای این برج، کل محله‌ی مالی شهر زیر پایمان است.
+  en: From the top of this tower, the whole financial district is laid out below us.
+narr: زیر هر کدام از آن ساختمان‌ها، مردان پروژه‌ی میهم ستون‌ها را پر از مواد منفجره کرده‌اند.
+  en: Under every one of those buildings, Project Mayhem has packed the support columns with explosives.
+narr: سرِ دقیقه، همه‌شان فرو می‌ریزند. ما صندلی ردیف اول را داریم.
+  en: On the minute, all of them come down. We have front-row seats.
+narr: این‌ها را می‌دانم، چون تایلر می‌داند.
+  en: I know this because Tyler knows this.
+
+@pose tyler talk
+tyler: دو دقیقه و نیم.
+  en: Two and a half minutes.
+@pose tyler gun_aim
+
+@camera x=640 y=360 zoom=1.0 t=3
+narr: و ناگهان می‌فهمم که همه‌ی این‌ها؛ اسلحه، بمب‌ها، انقلاب... همه‌اش یک جوری به دختری به اسم مارلا سینگر ربط دارد.
+  en: And suddenly I realize that all of this, the gun, the bombs, the revolution, has got something to do with a girl named Marla Singer.
+
+@flash marla x=1000 frames=3
+@glitch 0.6 t=0.6
+@sfx film_burn
+
+narr: صبر کن. بگذار از اول بگویم.
+  en: Wait. Let me go back.
+
+@letterbox off
+@music stop fade=2
+@fade out t=1.5
+@end

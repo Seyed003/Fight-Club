@@ -26,6 +26,7 @@ var _zone := Vector2(0.62, 0.8)
 var _flash := 0.0
 var _released := 0.0
 var _toggle := false
+var _react_t := 0.0
 var _w: Control
 var _prompt: Label
 var _sub: Label
@@ -157,6 +158,10 @@ func _process(delta: float) -> void:
 			if holding:
 				_meter += delta / _limit
 				_released = 0.0
+				_react_t -= delta
+				if _react_t <= 0.0 and (kv.has("victim") or kv.has("pose_b")):
+					_react_t = kvf("every", 0.45)
+					_react()
 				if randf() < delta * 4.0:
 					Film.shake(2.0 + _meter * 6.0, 0.15)
 				if kv.has("sfx") and randf() < delta * 1.5:
@@ -178,6 +183,10 @@ func _process(delta: float) -> void:
 				_needle_dir = 1.0
 		"resist":
 			_meter = _t / _limit
+			_react_t -= delta
+			if _react_t <= 0.0 and (kv.has("victim") or kv.has("pose_b")):
+				_react_t = kvf("every", 0.6)
+				_react()
 			if _t >= _limit:
 				_finish_ok()
 	_w.queue_redraw()

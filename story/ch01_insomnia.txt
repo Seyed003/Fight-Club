@@ -1,0 +1,325 @@
+# Chapter 1: Insomnia.
+# Bob's embrace, then six months back: the office, the catalogue, the
+# doctor, the support groups, the cave, and Marla Singer.
+
+@black
+@title
+@music groups fade=3
+@scene support_group
+@set_loc group rmt
+@actor leader x=1030 pose=sit face=l
+@actor man1 look=man_group x=250 pose=sit face=r
+@actor man2 look=thomas x=400 pose=sit face=r
+@actor bob x=650 pose=hug face=l anim=cry expr=cry z=1
+@actor jack look=jack_office x=592 pose=hugged face=r expr=blank
+
+bob: ما هنوز مردیم.
+  en: We're still men.
+jack: آره. ما مردیم. مرد بودن یعنی همین.
+  en: Yeah. We're men. That's what we are.
+
+narr: باب از من بزرگ‌تر بود. هیکلش مثل یک خرس بود.
+  en: Bob was bigger than me. Built like a bear.
+narr: سرطان بیضه داشت. اول جراحی، بعد هورمون‌درمانی. تستوسترونش پایین رفت و استروژنش بالا.
+  en: Testicular cancer. First the surgery, then the hormone therapy. His testosterone went down, his estrogen went up.
+narr: برای همین سینه‌هایش بزرگ شده بود. حالا هم سرِ من لای آن‌ها بود.
+  en: Which is why he'd grown breasts. And now my head was buried between them.
+
+bob: حالا می‌توانی گریه کنی.
+  en: You can cry now.
+
+@pose jack head_down
+narr: نه. صبر کن. برگردیم عقب‌تر. از اول.
+  en: No. Wait. Back up. Let me start earlier.
+
+@card
+  fa: شش ماه پیش
+  en: Six months earlier
+
+# --- The office --------------------------------------------------------------
+@music insomnia fade=2
+@scene office
+@actor jack look=jack_office x=640 pose=sit face=r prop=cup expr=blank
+
+narr: شش ماه بود که نمی‌توانستم بخوابم.
+  en: For six months, I couldn't sleep.
+narr: وقتی بی‌خوابی داری، هیچ‌وقت واقعاً خواب نیستی و هیچ‌وقت واقعاً بیدار هم نیستی.
+  en: With insomnia, you're never really asleep, and you're never really awake.
+@flash tyler x=1160 y=640 frames=2
+narr: همه‌چیز دور است. همه‌چیز کپیِ یک کپی از یک کپی است.
+  en: Everything's far away. Everything is a copy of a copy of a copy.
+
+@actor boss x=1300 face=l
+@move boss x=860 wait
+@pose boss present
+boss: این‌ها را می‌خواهم تا فردا اولویت‌بندی کنی. پرونده‌های فراخوان.
+  en: I'll need you to prioritize these by tomorrow. The recall files.
+@pose jack talk
+jack: باشه.
+  en: Sure.
+boss: و ظاهرت... برو یک کم بخواب.
+  en: And you look... get some sleep.
+@pose boss stand
+@move boss x=1350 wait
+
+narr: کارم هماهنگ‌کننده‌ی فراخوان در یک شرکت خودروسازی بزرگ بود.
+  en: I was a recall coordinator for a major car company.
+narr: هر روز صبح می‌آمدم، هر شب می‌رفتم. و بین این دو، هیچ.
+  en: In every morning, out every night. And in between, nothing.
+
+# --- The condo and the catalogue --------------------------------------------
+@scene condo
+@actor jack look=jack_casual x=360 pose=sit_slump face=r prop=catalog
+
+narr: مثل خیلی‌های دیگر، برده‌ی غریزه‌ی لانه‌سازی شده بودم.
+  en: Like so many others, I had become a slave to the nesting instinct.
+narr: کاتالوگ‌ها را ورق می‌زدم و از خودم می‌پرسیدم: کدام دست میز و صندلی مرا به‌عنوان یک آدم تعریف می‌کند؟
+  en: I'd flip through catalogues and wonder: what kind of dining set defines me as a person?
+narr: اگر چیزی هوشمندانه می‌دیدم، مثل یک میز قهوه‌ی کوچک به شکل یین و یانگ، باید مال من می‌شد.
+  en: If I saw something clever, like a little coffee table in the shape of a yin-yang, I had to have it.
+
+@game ikea min=4
+
+@remove jack
+@actor jack look=jack_casual x=820 pose=stand face=l
+narr: آپارتمانم کامل شده بود. نزدیک به کامل.
+  en: My condo was complete. Almost complete.
+narr: هر چیزی که می‌شد خرید، خریده بودم. ولی شب‌ها هنوز بیدار بودم.
+  en: I'd bought everything there was to buy. And at night I was still awake.
+
+# --- The doctor ---------------------------------------------------------------
+@scene doctor_office
+@actor doctor x=820 face=l pose=arms_crossed
+@actor jack look=jack_office x=520 face=r pose=stand
+
+jack: باید کمکم کنید. درد دارم.
+  en: You have to help me. I'm in pain.
+doctor: نه. چیزی که لازم داری خواب طبیعی است. ریشه‌ی سنبل‌الطیب بجو و بیشتر ورزش کن.
+  en: No. What you need is natural, healthy sleep. Chew some valerian root and get more exercise.
+@pose jack talk_open
+jack: نمی‌شود فقط یک چیزی به من بدهید؟ قرص، هر چیزی...
+  en: Can't you just give me something? Pills, anything...
+@flash tyler x=440 y=640 frames=2 scale=0.9
+doctor: می‌خواهی درد را ببینی؟ سه‌شنبه شب‌ها سری به کلیسای متدیست بزن.
+  en: You want to see pain? Swing by First Methodist on Tuesday nights.
+@pose doctor point
+doctor: مردهایی را ببین که سرطان بیضه دارند. درد یعنی آن.
+  en: See the guys with testicular cancer. That's pain.
+@pose jack head_down
+
+# --- Remaining Men Together ------------------------------------------------
+@music groups fade=2
+@scene support_group
+@set_loc group rmt
+@actor leader x=1030 pose=sit face=l
+@actor man1 look=man_group x=250 pose=sit face=r
+@actor man2 look=thomas x=400 pose=sit face=r
+@actor bob x=880 pose=sit face=l
+@actor jack look=jack_office x=560 pose=sit face=r expr=blank
+
+leader: خیلی خوب. توماس، ممنون که با ما حرف زدی.
+  en: All right. Thank you, Thomas, for sharing with us.
+leader: حالا دو نفر دو نفر بشویم. یک نفر را پیدا کنید و خودتان را به او بسپارید.
+  en: Now let's pair up. Find someone, and open yourself to them.
+
+@pose bob stand
+@pose jack stand
+@move bob x=650 wait
+@actor bob z=1
+@pose bob hug
+@pose jack hugged
+@face jack bob
+@move jack x=592 slide t=0.4 wait
+
+bob: من باب هستم.
+  en: I'm Bob.
+narr: باب. مردی با سینه‌های بزرگ. در گذشته بدن‌ساز بود؛ قهرمان. بعد سرطان آمد.
+  en: Bob. The big moosie. He used to be a bodybuilder, a champion. Then came the cancer.
+bob: زنم مرا ترک کرد. بچه‌هایم دیگر زنگ نمی‌زنند.
+  en: My wife left me. My kids don't call anymore.
+@anim bob cry
+@expr bob cry
+bob: حالا می‌توانی گریه کنی.
+  en: Go ahead. You can cry now.
+
+@qte hold time=4 actor=jack
+  fa: رها کن. بگذار گریه بیاید.
+  en: Let go. Let it come.
+
+@anim jack sob
+@expr jack cry
+narr: و بعد چیزی اتفاق افتاد. رها کردم.
+  en: And then something happened. I let go.
+narr: گم شدم در فراموشی. تاریک، ساکت و کامل.
+  en: Lost in oblivion. Dark, silent and complete.
+narr: آزادی را پیدا کردم. از دست دادن همه‌ی امیدها، آزادی بود.
+  en: I found freedom. Losing all hope was freedom.
+
+@scene black
+narr: آن شب خوابیدم. نوزادها هم این‌طور نمی‌خوابند.
+  en: That night, I slept. Babies don't sleep this well.
+
+# --- Every night a different disease --------------------------------------
+@music insomnia fade=1
+@scene support_group
+@set_loc group tb
+@actor jack look=jack_office x=560 pose=sit face=r
+@actor chloe x=880 pose=sit face=l
+@caption
+  fa: دوشنبه‌ها: سل
+  en: Mondays: tuberculosis
+narr: معتاد شدم.
+  en: I became addicted.
+@set_loc group parasites
+@caption
+  fa: سه‌شنبه‌ها: انگل‌های خونی
+  en: Tuesdays: blood parasites
+narr: اگر حرف نمی‌زدی، فکر می‌کردند حالت از همه بدتر است. بیشتر گریه می‌کردند.
+  en: If I didn't say anything, people always assumed the worst. They cried harder.
+@set_loc group dementia
+@caption
+  fa: چهارشنبه‌ها: زوال عقل
+  en: Wednesdays: organic brain dementia
+narr: من با آن‌ها گریه می‌کردم. و هر شب می‌مُردم. و هر شب دوباره به دنیا می‌آمدم.
+  en: I cried with them. Every evening I died, and every evening I was born again. Resurrected.
+@set_loc group cancer
+@caption
+  fa: پنجشنبه‌ها: سرطان روده
+  en: Thursdays: ascending bowel cancer
+@pose chloe talk
+chloe: من کلویی هستم. هنوز زنده‌ام. ولی نمی‌دانم چقدر دیگر...
+  en: I'm Chloe. I'm still alive. But I don't know for how much longer...
+
+# --- The cave -------------------------------------------------------------
+@set_loc group meditation
+@clear
+@actor leader x=1030 pose=sit face=l
+@actor jack look=jack_office x=560 pose=sit face=r expr=closed
+leader: چشم‌هایتان را ببندید. حالا تصور کنید در ورودی یک غار ایستاده‌اید.
+  en: Close your eyes. Now imagine you're standing at the entrance of a cave.
+leader: وارد غارتان شوید. هر چه جلوتر بروید، گرماتر و آرام‌تر می‌شوید. حیوان قدرت‌تان را پیدا کنید.
+  en: Step into your cave. The deeper you go, the warmer and calmer you feel. Find your power animal.
+
+@music stop fade=1
+@scene cave
+@set_loc who_waits penguin
+@actor jack look=jack_office x=160 face=r
+@game walk actor=jack to=900
+  fa: به عمق غارت برو و حیوان قدرتت را پیدا کن. (A و D)
+  en: Go deeper into your cave and find your power animal. (A and D)
+penguin: سُر بخور.
+  en: Slide.
+
+# --- Marla ----------------------------------------------------------------
+@music groups fade=2
+@scene support_group
+@set_loc group rmt
+@actor leader x=1030 pose=sit face=l
+@actor bob x=880 pose=sit face=l
+@actor man1 look=man_group x=250 pose=sit face=r
+@actor jack look=jack_office x=400 pose=sit face=r
+@actor marla x=1400 face=l
+@move marla x=720 wait
+@pose marla sit
+@pose marla smoke
+
+narr: و بعد سر و کله‌ی او پیدا شد.
+  en: And then she showed up.
+narr: مارلا سینگر. او سرطان بیضه نداشت. دروغگو بود.
+  en: Marla Singer. She did not have testicular cancer. She was a liar.
+narr: هیچ‌کدام از بیماری‌هایی که برایشان می‌آمد را نداشت. من در گروه سل دیده بودمش. در ملانوما. در انگل‌های خونی.
+  en: She had none of the diseases. I'd seen her at tuberculosis. At melanoma. At blood parasites.
+narr: یک توریست.
+  en: A tourist.
+@pose bob hug
+narr: دروغِ او، دروغِ مرا نشانم می‌داد. و ناگهان هیچ حسی نداشتم. نمی‌توانستم گریه کنم.
+  en: Her lie reflected my lie. And suddenly I felt nothing. I couldn't cry.
+narr: پس دوباره نتوانستم بخوابم.
+  en: So, once again, I couldn't sleep.
+
+@scene cave
+@set_loc who_waits marla
+@actor jack look=jack_office x=380 face=r
+@actor marla x=900 face=l pose=smoke
+@grade dream
+marla: سُر بخور.
+  en: Slide.
+@pose jack head_down
+narr: حتی در غارم هم بود.
+  en: She was even in my cave.
+
+# --- The deal -------------------------------------------------------------
+@music insomnia fade=2
+@scene street_night
+@actor marla x=900 face=r pose=smoke
+@actor jack look=jack_coat x=360 face=r
+@move jack x=640 wait
+jack: مارلا! صبر کن.
+  en: Marla! Wait.
+@face marla jack
+@pose marla smoke
+marla: چی می‌خواهی؟
+  en: What do you want?
+jack: تو متقلبی. تو را در سل دیده‌ام. در ملانوما. در سرطان بیضه!
+  en: You're a faker. I've seen you at tuberculosis. At melanoma. At testicular cancer!
+marla: تو هم دیده‌ای؟ من هم تو را دیده‌ام.
+  en: Oh, you've seen me? I've seen you too.
+@pose jack talk_open
+jack: دارم حرفت را می‌زنم... می‌فهمی؟ این گروه‌ها تنها چیزی بود که داشتم. وقتی تو آن‌جایی، نمی‌توانم گریه کنم.
+  en: I'm onto you... understand? These groups are all I have. When you're there, I can't cry.
+marla: از سینما ارزان‌تر است. و قهوه‌اش مجانی است.
+  en: It's cheaper than a movie. And there's free coffee.
+jack: پس نصف کنیم. هفته را تقسیم کنیم.
+  en: Then let's split it up. Divide the week.
+
+@choice
+@option split_tb
+  fa: «تو انگل‌های خونی را بردار. سل مال من.»
+  en: "You take the blood parasites. I'll take tuberculosis."
+@option split_days
+  fa: «دوشنبه و چهارشنبه و جمعه مال من.»
+  en: "Mondays, Wednesdays and Fridays are mine."
+@endchoice
+
+@label split_tb
+marla: نه. من سل را می‌خواهم. سیگار کشیدنم در گروه سل خیلی به چشم نمی‌آید.
+  en: No. I want tuberculosis. My smoking doesn't go over at all there.
+@goto split_more
+@label split_days
+marla: باشد. ولی سل مال من است. سیگار کشیدنم آن‌جا به چشم نمی‌آید.
+  en: Fine. But I want tuberculosis. My smoking doesn't go over at all there.
+@label split_more
+jack: باشد. سرطان بیضه هم واضح است که مال من است.
+  en: Fine. And testicular cancer should be mine, obviously.
+marla: از نظر فنی، من بیشتر از تو حق دارم آن‌جا باشم. تو هنوز بیضه‌هایت را داری.
+  en: Well, technically, I have more of a right to be there than you. You still have your balls.
+jack: داری شوخی می‌کنی؟
+  en: You're kidding.
+marla: نمی‌دانم. هستم؟
+  en: I don't know. Am I?
+jack: سرطان روده‌ی صعودی؟
+  en: Ascending bowel cancer?
+marla: داشتم برمی‌داشتمش.
+  en: I was going to take that one.
+jack: مال تو.
+  en: It's yours.
+@pose marla stand
+marla: پس تمام است. خداحافظ.
+  en: So that's it. Goodbye.
+@move marla x=1100 wait
+jack: مارلا! بیا شماره‌هایمان را عوض کنیم. اگر خواستیم شب‌ها را جابه‌جا کنیم.
+  en: Marla! Should we exchange numbers? In case we want to switch nights.
+@face marla jack
+marla: باشد.
+  en: All right.
+
+narr: فلسفه‌ی زندگی مارلا این بود که هر لحظه ممکن است بمیرد.
+  en: Marla's philosophy of life was that she might die at any moment.
+narr: و تراژدی، به قول خودش، این بود که نمی‌مُرد.
+  en: The tragedy, she said, was that she didn't.
+@move marla x=1450
+@pose jack head_down
+narr: و بی‌خوابی‌ام برگشته بود.
+  en: And my insomnia was back.
+@fade out t=1.5
+@end

@@ -1,0 +1,246 @@
+# Chapter 5: The Rules.
+# Bob finds Fight Club, Lou comes down to the basement, the homework, the
+# boss's office, and Raymond K. Hessel.
+
+@black
+@title
+@music basement fade=2
+@scene basement
+@crowd 0.4
+@actor jack look=jack_fight x=420 face=r pose=stand bruise=0.4
+@actor bob look=bob_fight x=1350 face=l
+@move bob x=820 wait
+
+bob: کورنلیوس؟ خودتی؟
+  en: Cornelius? Is that you?
+narr: در گروه‌ها، به همه اسم دیگری گفته بودم. کورنلیوس، روپرت، تراویس... هر اسمی جز اسم خودم.
+  en: At the groups, I'd given everyone a different name. Cornelius, Rupert, Travis... any name but my own.
+@pose jack talk
+jack: باب! زنده‌ای!
+  en: Bob! You're alive!
+@pose bob talk_open
+bob: گروه را ول کردم. یک چیز بهتر پیدا کرده‌ام.
+  en: I quit the group. I found something better.
+bob: یک گروه است، فقط برای مردها. قانون اولش این است که درباره‌اش حرف نزنی. قانون دومش هم...
+  en: It's a group, men only. The first rule is you don't talk about it. And the second rule...
+@expr jack smirk
+narr: باب درباره‌ی فایت کلاب حرف می‌زد. با من. در فایت کلاب.
+  en: Bob was talking about Fight Club. To me. At Fight Club.
+@pose bob guard
+bob: بیا ببینیم چه داری، کورنلیوس.
+  en: Let's see what you've got, Cornelius.
+
+@game fight a1=jack a2=bob l1=jack_fight l2=bob_fight ai=bob must_win x1=420 x2=820
+
+@pose bob sit_floor
+@pose jack stand
+@expr bob laugh
+bob: خدایا... حالم خوب است. سال‌ها بود این‌قدر حالم خوب نبود.
+  en: God... I feel good. I haven't felt this good in years.
+
+# --- Lou ---------------------------------------------------------------------
+@music tension fade=1
+@clear
+@crowd 0.2
+@actor tyler look=tyler_fight x=640 face=r pose=stand
+@actor jack look=jack_fight x=300 face=r pose=stand bruise=0.4
+@actor lou x=1350 face=l
+@actor goon1 look=stranger x=1420 face=l
+@move lou x=860
+@move goon1 x=1010 wait
+@sfx door_slam
+
+lou: این‌جا مسئول کیست؟
+  en: Who's in charge here?
+@face tyler lou
+@pose tyler shrug
+tyler: کی مسئول است؟
+  en: Who's in charge?
+lou: این زیرزمینِ بارِ من است. شما هر شنبه این‌جا را...
+  en: This is my bar's basement. Every Saturday you people...
+tyler: لو، صاحب‌خانه. با کمال احترام، تو پولت را گرفته‌ای.
+  en: Lou, our landlord. With all due respect, you've been paid.
+@pose lou cross
+@sfx punch_heavy
+@shake 9
+@pose tyler hit
+@hurt tyler bruise=0.15 blood=0.15
+narr: لو، تایلر را زد.
+  en: Lou hit Tyler.
+@pose tyler stand
+@expr tyler laugh
+@anim tyler laugh
+
+@qte hold time=6 actor=lou pose_a=guard pose_b=cross victim=tyler blood=0.06 bruise=0.05 sfx=punch_heavy every=0.5
+  fa: (تایلر) تحمل کن. بخند.
+  en: (Tyler) Take it. Keep laughing.
+
+@pose tyler kneel
+@anim tyler laugh
+tyler: تو نمی‌دانی من کجاها بوده‌ام، لو!
+  en: You don't know where I've been, Lou!
+@pose tyler crouch
+@move tyler x=820 slide t=0.4
+@pose tyler hug
+narr: تایلر روی لو افتاد و خونش را به سر و صورت او مالید.
+  en: Tyler fell on Lou and bled all over him.
+@pose lou dodge
+@move lou x=960 slide t=0.4 wait
+@expr lou shock
+tyler: هیچ‌کدام‌مان نمی‌دانیم کجاها بوده‌ایم!
+  en: None of us know where we've been!
+@pose tyler kneel
+tyler: بگذار بمانیم، لو. بگذار زیرزمین مال ما باشد.
+  en: Let us stay, Lou. Let us keep the basement.
+@pose lou stand
+lou: ...باشد. زیرزمین مال شما.
+  en: ...Fine. Keep the damn basement.
+@move lou x=1400
+@move goon1 x=1450 wait
+@crowd 1
+@sfx crowd_cheer
+
+# --- Homework -------------------------------------------------------------------
+@music tyler fade=2
+@scene basement_meeting
+@actor tyler look=tyler x=640 face=r pose=talk_open bruise=0.6 blood=0.2
+tyler: تکلیف این هفته‌تان.
+  en: Your homework assignment.
+tyler: بروید و با یک غریبه دعوا راه بیندازید.
+  en: Go out and start a fight with a total stranger.
+@pose tyler point
+@expr tyler smirk
+tyler: و ببازید.
+  en: And lose.
+narr: کار ساده‌ای نیست. آدم‌ها هر کاری می‌کنند تا با تو درگیر نشوند.
+  en: It's not easy. People will do almost anything to avoid a fight.
+
+@scene street_day
+@actor stranger x=760 face=l pose=hands_pockets
+@actor jack look=jack_casual x=520 face=r pose=stand bruise=0.4
+@pose jack talk_open
+jack: هی! تو! کت قشنگی داری. حیف که روی تنِ تو است.
+  en: Hey! You! Nice jacket. Shame about who's wearing it.
+@pose stranger arms_crossed
+stranger: برو پی کارت، آقا.
+  en: Get lost, buddy.
+@pose jack point
+jack: بزن دیگر. می‌دانم دلت می‌خواهد.
+  en: Go on, hit me. I know you want to.
+@pose stranger guard
+@expr stranger angry
+
+@qte resist time=5 actor=stranger pose_a=guard pose_b=cross victim=jack bruise=0.05 blood=0.04 sfx=punch_heavy every=0.7
+  fa: جواب نده. بگذار بزند.
+  en: Don't hit back. Let him win.
+
+@pose jack sit_floor
+@pose stranger stand
+@move stranger x=1400 wait
+narr: تکلیف انجام شد.
+  en: Homework done.
+
+# --- The copier ---------------------------------------------------------------
+@music insomnia fade=2
+@scene boss_office
+@actor boss x=860 face=l pose=stand
+@actor jack look=jack_office x=420 face=r pose=stand bruise=0.5
+
+@pose boss hold
+@prop boss card
+boss: این را در دستگاه کپی پیدا کردم. «قانون اول فایت کلاب...»
+  en: I found this in the copy machine. "The first rule of Fight Club..."
+boss: این مال توست؟
+  en: Is this yours?
+@pose jack think
+jack: اگر جای شما بودم، مواظب بودم. کسی که این را نوشته خطرناک است.
+  en: I'd be careful with that. The person who wrote it is dangerous.
+jack: آدمی که از آن‌هاست که یک روز ممکن است بی‌خبر سر از تک‌تک اتاق‌های این‌جا دربیاورد.
+  en: The kind of guy who could snap any day and turn up in every office on this floor.
+@prop boss none
+@expr boss shock
+boss: ...داری مرا تهدید می‌کنی؟
+  en: ...Are you threatening me?
+@pose jack talk
+jack: نه. ولی بیایید معامله کنیم. من حقوقم را می‌گیرم. شما مرا به عنوان مشاور بیرون از شرکت نگه می‌دارید. من در خانه می‌مانم.
+  en: No. But let's make a deal. I keep my salary. You keep me on as an outside consultant. I stay home.
+jack: و درباره‌ی فراخوان‌هایی که ندادید، با هیچ‌کس حرف نمی‌زنم.
+  en: And I won't tell anyone about the recalls you never made.
+@pose boss point
+boss: تو اخراجی. همین حالا نگهبان‌ها را صدا می‌کنم.
+  en: You're fired. I'm calling security right now.
+
+@pose jack self_punch
+narr: و بعد کاری کردم که هیچ‌وقت فکرش را نمی‌کردم.
+  en: And then I did something I never imagined.
+
+@qte mash target=18 time=7 actor=jack pose_a=self_punch pose_b=hit victim=jack bruise=0.04 blood=0.05 sfx=punch_heavy shake=6
+  fa: خودت را بزن.
+  en: Beat yourself up.
+
+@set_loc broken true
+@sfx glass_break
+@pose jack lie
+@expr boss shock
+narr: یاد اولین دعوایم با تایلر افتادم.
+  en: I was reminded of my first fight with Tyler.
+@actor guard x=1400 face=l pose=stand
+@move guard x=1040 run wait
+@pose jack kneel
+@expr jack pain
+jack: خواهش می‌کنم! دیگر نزنید! هر چه بخواهید می‌دهم!
+  en: Please! Don't hit me again! I'll give you anything!
+@pose boss surrender
+narr: با آن صحنه، رئیس هیچ راهی نداشت.
+  en: With that picture, my boss had no way out.
+narr: حالا شرکت به من پول می‌داد که در خانه بمانم.
+  en: Now the company paid me to stay home.
+
+# --- Raymond K. Hessel ---------------------------------------------------------
+@music tension fade=2
+@scene convenience_store
+@actor raymond x=760 face=l pose=kneel expr=shock
+@actor jack look=jack_coat x=520 face=r pose=gun_aim prop=gun bruise=0.5
+
+narr: تایلر یک اسلحه خرید.
+  en: Tyler bought a gun.
+jack: کیف پولت را بده.
+  en: Give me your wallet.
+@pose raymond hand_out
+@prop raymond card
+@prop jack card
+jack: ریموند کی. هسل. آدرس: یک زیرزمین. چه کاره می‌خواستی بشوی، ریموند؟
+  en: Raymond K. Hessel. Lives in a basement apartment. What did you want to be, Raymond?
+@prop jack gun
+raymond: چی؟
+  en: What?
+jack: پرسیدم چه می‌خواستی بشوی!
+  en: I asked you what you wanted to be!
+raymond: د... دامپزشک.
+  en: V... veterinarian.
+jack: برای همین درس خواندن باید خیلی زحمت کشید.
+  en: That means you have to go to a lot of school.
+raymond: خیلی سخت است.
+  en: It's too hard.
+
+@choice
+@option ray_threat
+  fa: «گواهینامه‌ات پیش من می‌ماند. شش هفته دیگر می‌آیم سراغت.»
+  en: "I'm keeping your license. I'll check on you in six weeks."
+@endchoice
+@label ray_threat
+jack: اگر تا شش هفته‌ی دیگر در راه دامپزشک شدن نباشی، برمی‌گردم.
+  en: If you're not on your way to becoming a veterinarian in six weeks, I'll be back.
+jack: حالا برو خانه.
+  en: Now run on home.
+@pose raymond stand
+@move raymond x=1450 run wait
+@pose jack stand
+@prop jack none
+@expr jack smirk
+narr: فردا، زیباترین روز زندگیِ ریموند کی. هسل خواهد بود.
+  en: Tomorrow will be the most beautiful day of Raymond K. Hessel's life.
+narr: صبحانه‌اش از هر غذایی که من و تو خورده‌ایم، خوشمزه‌تر خواهد بود.
+  en: His breakfast will taste better than any meal you and I have ever tasted.
+@fade out t=1.5
+@end

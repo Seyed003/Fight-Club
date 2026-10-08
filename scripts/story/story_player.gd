@@ -295,7 +295,7 @@ func _exec(step: Dictionary) -> void:
 				else:
 					var tw := create_tween()
 					tw.tween_property(p, "alpha", to, time)
-					if a.has("wait"):
+					if a.has("wait") and tw.is_running():
 						await tw.finished
 		"wait":
 			await _flush_fade()
@@ -479,6 +479,8 @@ func _move(id: String, kv: Dictionary, wait: bool, run: bool, slide: bool) -> vo
 	var p := stage.get_actor(id)
 	if p == null:
 		return
+	if wait:
+		await _flush_fade()
 	var to := float(kv.get("x", p.position.x))
 	var dist: float = abs(to - p.position.x)
 	var speed := 260.0 if run else 150.0
@@ -498,8 +500,7 @@ func _move(id: String, kv: Dictionary, wait: bool, run: bool, slide: bool) -> vo
 		if is_instance_valid(p) and not slide:
 			p.anim = ""
 			p.set_pose(kv.get("pose", "stand")))
-	if wait:
-		await _flush_fade()
+	if wait and tw.is_running():
 		await tw.finished
 
 
@@ -579,7 +580,7 @@ func _show_title(step: Dictionary) -> void:
 	var v := UI.vbox(16)
 	v.alignment = BoxContainer.ALIGNMENT_CENTER
 	root.add_child(UI.center(v))
-	var label := UI.label(Game.chapter_label(chapter_index), "Heading", HORIZONTAL_ALIGNMENT_CENTER)
+	var label := UI.label(func(): return Game.chapter_label(chapter_index), "Heading", HORIZONTAL_ALIGNMENT_CENTER)
 	label.add_theme_color_override("font_color", Loc.SOAP)
 	v.add_child(label)
 	var title_pair: Variant = Game.CHAPTERS[chapter_index]["title"]

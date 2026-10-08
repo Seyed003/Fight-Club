@@ -1,0 +1,298 @@
+# Chapter 2: Single-Serving Friends.
+# Business trips, the formula, Tyler on the plane, the exploded condo,
+# Lou's Tavern and the first punch in the parking lot.
+
+@black
+@title
+@music insomnia fade=2
+@scene airplane
+@actor jack look=jack_office x=470 pose=sit face=r expr=blank
+@actor woman look=woman_plane x=800 pose=sit face=l
+
+narr: کارم مرا به همه‌جا می‌برد. هر بار در یک فرودگاه دیگر از خواب بیدار می‌شدم.
+  en: My job took me everywhere. I'd wake up in a different airport every time.
+narr: زندگی در حرکت: شکرِ یک‌نفره، خامه‌ی یک‌نفره، کره‌ی یک‌نفره.
+  en: Life on the go: single-serving sugar, single-serving cream, single-serving butter.
+narr: آدم‌هایی که در هواپیما کنارم می‌نشستند هم یک‌نفره بودند. دوستان یک‌بارمصرف.
+  en: The people I met on each flight were single-serving too. Single-serving friends.
+
+@pose woman talk
+woman: شما برای کدام شرکت خودروسازی کار می‌کنید؟
+  en: Which car company do you work for?
+@pose jack talk
+jack: یکی از بزرگ‌ها.
+  en: A major one.
+jack: کارم این است که فرمولی را اجرا کنم.
+  en: My job is to apply the formula.
+jack: یک ماشینِ ساخت شرکت ما با سرعت صد کیلومتر از خانه بیرون می‌زند. دیفرانسیل عقبش قفل می‌کند. ماشین تصادف می‌کند و آتش می‌گیرد.
+  en: A new car built by my company leaves somewhere at sixty miles an hour. The rear differential locks up. The car crashes and burns.
+jack: حالا: آیا فراخوان بدهیم یا نه؟
+  en: Now: do we initiate a recall?
+jack: تعداد ماشین‌های فروخته‌شده را بگیر، «آ». ضربش کن در احتمال خرابی، «ب». ضربش کن در میانگین غرامتی که خارج از دادگاه می‌دهیم، «پ».
+  en: Take the number of vehicles in the field, A. Multiply by the probable rate of failure, B. Multiply by the average out-of-court settlement, C.
+
+@choice
+@option formula_right
+  fa: «اگر حاصل‌ضرب کمتر از هزینه‌ی فراخوان باشد، فراخوان نمی‌دهیم.»
+  en: "If A times B times C is less than the cost of a recall, we don't do one."
+@option formula_wrong
+  fa: «اگر حتی یک نفر در خطر باشد، فراخوان می‌دهیم.»
+  en: "If even one person is at risk, we recall."
+@endchoice
+
+@label formula_wrong
+@pose woman shrug
+woman: واقعاً؟
+  en: Really?
+jack: نه. شوخی کردم. اگر حاصل‌ضرب کمتر از هزینه‌ی فراخوان باشد، فراخوان نمی‌دهیم.
+  en: No. If A times B times C is less than the cost of a recall, we don't do one.
+@label formula_right
+woman: این‌جور تصادف‌ها زیاد پیش می‌آید؟
+  en: Are there a lot of these kinds of accidents?
+jack: باورتان نمی‌شود.
+  en: You wouldn't believe.
+woman: کدام شرکت؟
+  en: Which car company do you work for?
+jack: یکی از بزرگ‌ها.
+  en: A major one.
+@pose woman head_down
+
+narr: هر بار که هواپیما موقع بلند شدن یا نشستن زیادی کج می‌شد، دعا می‌کردم سقوط کنیم.
+  en: Every time the plane banked too sharply on takeoff or landing, I prayed for a crash.
+narr: یا یک برخورد در هوا. هر چیزی.
+  en: Or a mid-air collision. Anything.
+@sfx explosion
+@shake 14 t=1.2
+@white t=0.6
+@grade memory t=0
+@wait 1.2
+@grade office
+@sfx ding db=-6
+narr: بیمه‌ی عمر، اگر در سفر کاری بمیری، سه برابر پرداخت می‌کند.
+  en: Life insurance pays off triple if you die on a business trip.
+
+# --- Tyler ----------------------------------------------------------------
+@scene airplane
+@music tyler fade=2
+@actor jack look=jack_office x=470 pose=sit face=r expr=blank prop=briefcase
+@actor tyler look=tyler_plane x=800 pose=sit_lean_back face=l prop=briefcase expr=smirk
+
+narr: و بعد او را دیدم.
+  en: And then I met him.
+@pose tyler talk
+tyler: می‌دانی چرا در هواپیما ماسک اکسیژن می‌گذارند؟
+  en: You know why they put oxygen masks on planes?
+jack: که بتوانی نفس بکشی.
+  en: So you can breathe.
+tyler: اکسیژن آدم را سرخوش می‌کند. وسط یک فاجعه، تند تند و با وحشت نفس می‌کشی و ناگهان آرام می‌شوی.
+  en: Oxygen gets you high. In a catastrophe you're taking giant panicked breaths, and suddenly you become euphoric.
+tyler: رام می‌شوی. سرنوشتت را می‌پذیری. همه‌اش همین‌جاست.
+  en: Docile. You accept your fate. It's all right here.
+@pose tyler point
+tyler: فرود اضطراری روی آب، با سرعت نهصد کیلومتر. چهره‌های بی‌حس، آرام مثل گاوهای هندی.
+  en: Emergency water landing, six hundred miles an hour. Blank faces, calm as Hindu cows.
+jack: ...جالب است.
+  en: ...That's interesting.
+tyler: خیلی چیزها جالب است.
+  en: Lots of things are interesting.
+
+@pose tyler sit_lean_back
+tyler: ما یک کیف داریم.
+  en: We have the exact same briefcase.
+narr: اسمش تایلر داردن بود. فروشنده‌ی صابون.
+  en: His name was Tyler Durden. He sold soap.
+narr: می‌دانست چطور با چیزهای آشپزخانه‌ی هر خانه‌ای، آدم می‌تواند هر چیزی را منفجر کند. بلد بود از هیچ، آتش درست کند.
+  en: He knew how anything in an ordinary kitchen could be used to blow something up. He knew how to make fire out of nothing.
+
+@pose jack talk
+jack: برای مدتی که کنار هم نشسته‌ایم، تو جالب‌ترین دوست یک‌بارمصرفی هستی که داشته‌ام.
+  en: Of all the single-serving friends I've had, you're the most interesting.
+tyler: آها، فهمیدم. چه زرنگ.
+  en: Oh, I get it. That's very clever.
+jack: ممنون.
+  en: Thank you.
+tyler: برایت خوب کار می‌کند؟
+  en: How's that working out for you?
+jack: چی؟
+  en: What?
+tyler: زرنگ بودن.
+  en: Being clever.
+jack: ...عالی.
+  en: ...Great.
+tyler: پس ادامه بده. واقعاً ادامه بده.
+  en: Keep it up then. Right up.
+
+@pose tyler hand_out
+@prop tyler card
+tyler: این کارت من است. اگر خواستی صابون بخری.
+  en: Here's my card. In case you ever want to buy soap.
+@prop tyler briefcase
+narr: روی کارت نوشته بود: شرکت صابون‌سازی پیپر استریت.
+  en: The card said: Paper Street Soap Company.
+@pose tyler stand
+tyler: حالا یک سؤال آداب معاشرت: وقتی از جلویت رد می‌شوم، پشتم را به تو کنم یا جلویم را؟
+  en: Now, a question of etiquette: as I pass, do I give you the ass or the crotch?
+@move tyler x=1450 wait
+
+# --- The condo ------------------------------------------------------------
+@music tension fade=2
+@scene condo_burned
+@actor jack look=jack_coat x=320 face=r
+@actor doorman x=900 face=l
+
+narr: خانه، یک آپارتمان در طبقه‌ی پانزدهم یک ساختمان بود؛ مثل یک فایل‌کابینت برای بیوه‌ها و جوان‌های شاغل.
+  en: Home was a condo on the fifteenth floor of a filing cabinet for widows and young professionals.
+@move jack x=640 wait
+doorman: شما از طبقه‌ی پانزده هستید؟
+  en: You're from fifteen?
+jack: بله.
+  en: Yes.
+doorman: آپارتمان‌تان... منفجر شده.
+  en: Your apartment... it exploded.
+@pose jack head_down
+doorman: پلیس می‌گوید شاید گاز بوده. شمعک یخچال، یک جرقه. هیچ‌کس نمی‌داند.
+  en: The police think maybe it was gas. A pilot light, a spark. Nobody knows.
+@sfx glass_break db=-8
+narr: آن آپارتمان فقط یک مشت وسیله نبود که نابود شد. خودِ من بود.
+  en: That wasn't just a bunch of stuff that got destroyed. It was me.
+narr: یخچال پر از سس‌ها بود و هیچ غذایی نداشت.
+  en: A fridge full of condiments and no real food.
+
+# --- The payphone -----------------------------------------------------------
+@scene street_night
+@set_loc traffic false
+@actor jack look=jack_coat x=110 face=r pose=phone prop=phone
+narr: هیچ‌کس را نداشتم که به او زنگ بزنم. اسم مارلا روی زبانم آمد، و تلفن را قطع کردم.
+  en: I had no one to call. Marla's name came to mind, and I hung up.
+@sfx phone_ring
+narr: بعد کارت تایلر را پیدا کردم.
+  en: Then I found Tyler's card.
+@sfx phone_ring
+tyler_phone: الو؟
+  en: Hello?
+jack: تایلر؟ ...ما در هواپیما با هم آشنا شدیم. همان کیف یکسان.
+  en: Tyler? ...We met on the plane. The same briefcase.
+tyler_phone: آها، آره. آدمِ زرنگ.
+  en: Oh, yeah. The clever guy.
+tyler_phone: یک بار بیا، یک چیزی بخوریم.
+  en: Come by for a drink.
+
+# --- Lou's Tavern -----------------------------------------------------------
+@music tyler fade=2
+@scene lous_bar
+@actor jack look=jack_coat x=470 face=r pose=stand prop=beer
+@actor tyler x=800 face=l pose=stand prop=beer expr=smirk
+
+tyler: می‌دانی «دووِت» چیست؟
+  en: Do you know what a duvet is?
+jack: روتختی است.
+  en: It's a comforter.
+tyler: یک پتو است. فقط یک پتو. چرا آدم‌هایی مثل من و تو می‌دانند دووت چیست؟
+  en: It's a blanket. Just a blanket. Why do guys like you and me know what a duvet is?
+@pose tyler talk_open
+tyler: ما مصرف‌کننده‌ایم. محصول جانبی یک وسواس به سبک زندگی.
+  en: We're consumers. We're the by-products of a lifestyle obsession.
+tyler: قتل، جنایت، فقر... این‌ها نگرانم نمی‌کنند. چیزی که نگرانم می‌کند مجله‌ی سلبریتی‌هاست، و تلویزیون با پانصد کانال.
+  en: Murder, crime, poverty, these things don't concern me. What concerns me is celebrity magazines, and television with five hundred channels.
+@pose tyler point
+tyler: وسایلی که داری، آخرش صاحب تو می‌شوند.
+  en: The things you own end up owning you.
+@pose tyler stand
+@pose jack talk
+jack: ...خب. حالا به هر حال، کجا بخوابم؟ یک هتل پیدا می‌کنم.
+  en: ...Well. Anyway, I'll find a hotel.
+tyler: چرا نمی‌پرسی؟
+  en: Why don't you just ask, man?
+jack: چی را؟
+  en: Ask what?
+tyler: این‌که می‌توانی پیش من بمانی یا نه.
+  en: If you can stay at my place.
+
+@choice
+@option ask
+  fa: «می‌توانم پیش تو بمانم؟»
+  en: "Can I stay at your place?"
+@endchoice
+@label ask
+
+tyler: آره، می‌توانی.
+  en: Yeah, you can.
+@pose tyler hand_out
+tyler: ولی یک لطف می‌خواهم.
+  en: I want you to do me one favor.
+jack: چه لطفی؟
+  en: What's that?
+@pose tyler stand
+@expr tyler smirk
+tyler: می‌خواهم تا جایی که زور داری، مرا بزنی.
+  en: I want you to hit me as hard as you can.
+
+# --- The parking lot --------------------------------------------------------
+@music stop fade=1
+@scene lous_parking
+@set_loc crowd 0
+@actor jack look=jack_coat x=500 face=r pose=stand
+@actor tyler look=tyler x=760 face=l pose=taunt expr=smirk
+
+jack: جدی می‌گویی؟ ...چرا؟
+  en: You're serious? ...Why?
+tyler: چرا؟ چرا نه؟ نمی‌دانم. هیچ‌وقت دعوا نکرده‌ام. تو کرده‌ای؟
+  en: Why? I don't know, why not? I've never been in a fight. Have you?
+jack: نه. ولی این چیز خوبی است.
+  en: No. But that's a good thing.
+tyler: نه. نمی‌خواهم بدون زخم بمیرم. بیا. بزن.
+  en: No. I don't want to die without any scars. Come on. Hit me.
+
+@game fight a1=jack a2=tyler l1=jack_coat l2=tyler ai=tyler_tutorial variant=first_punch x1=560 x2=740
+
+@pose tyler hit
+@expr tyler pain
+@sfx punch_heavy
+tyler: آخ! لعنتی، توی گوشم!
+  en: Ow! Jesus, right in the ear!
+@pose jack shrug
+jack: وای... ببخشید.
+  en: Oh God... I'm sorry.
+tyler: چرا توی گوش، آخه؟
+  en: Why the ear, man?
+jack: نمی‌دانم! تا حالا این کار را نکرده بودم.
+  en: I don't know! I've never done this before.
+@expr tyler laugh
+tyler: نه، عالی بود. حالا نوبت من است.
+  en: No, that was perfect. Now it's my turn.
+@pose tyler cross
+@sfx punch_heavy
+@shake 8
+@pose jack hit_body
+@hurt jack bruise=0.15
+@expr jack pain
+@wait 0.6
+@pose tyler guard
+jack: آخ... لعنتی...
+  en: Ow... God...
+tyler: دوباره بزن.
+  en: Hit me again.
+
+@crowd 0.2
+@game fight a1=jack a2=tyler l1=jack_coat l2=tyler ai=tyler_tutorial variant=spar time=40
+
+@pose jack sit_floor
+@pose tyler sit_floor
+@face jack r
+@face tyler l
+@move jack x=560 slide t=0.5
+@move tyler x=760 slide t=0.5
+@prop jack beer
+@prop tyler beer
+@expr jack none
+@expr tyler smirk
+@music tyler fade=3
+
+tyler: باید دوباره این کار را بکنیم.
+  en: We should do this again sometime.
+narr: خون روی صورتم بود. و حالم بهتر از هر وقتی بود که یادم می‌آمد.
+  en: There was blood on my face. And I felt better than I could remember.
+narr: آن شب، پیش تایلر رفتم. به خانه‌ای در خیابان پیپر.
+  en: That night, I went home with Tyler. To a house on Paper Street.
+@fade out t=1.5
+@end

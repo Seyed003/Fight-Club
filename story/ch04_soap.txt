@@ -1,0 +1,207 @@
+# Chapter 4: Soap.
+# Marla's overdose call, Marla and Tyler, the liposuction clinic, the
+# kitchen, the chemical burn, and selling soap back to the rich.
+
+@black
+@title
+@music insomnia fade=2
+@scene paper_street_int
+@actor jack look=jack_casual x=520 pose=sit face=r
+
+@sfx phone_ring
+@wait 1.0
+@sfx phone_ring
+@pose jack phone
+@prop jack phone
+marla_phone: من هستم. مارلا.
+  en: It's me. Marla.
+marla_phone: یک عالمه زاناکس خورده‌ام. بیشتر از آن‌که باید.
+  en: I took a lot of Xanax. More than you're supposed to.
+marla_phone: این از آن خودکشی‌های واقعی نیست، ها. از آن‌هایی است که آدم کمک می‌خواهد.
+  en: This isn't a for-real suicide thing. It's probably one of those cry-for-help things.
+marla_phone: نمی‌خواهی بیایی و آخرین نفس‌هایم را بشنوی؟
+  en: Don't you want to come over and hear my death rattle?
+
+@choice
+@option phone_down
+  fa: (گوشی را روی میز بگذار و برو بخواب.)
+  en: (Set the phone down on the table and go to bed.)
+@option phone_talk
+  fa: «مارلا، خوابم می‌آید.»
+  en: "Marla, I'm tired."
+@endchoice
+@label phone_talk
+marla_phone: همه خسته‌اند.
+  en: Everyone's tired.
+@label phone_down
+@pose jack stand
+@prop jack none
+narr: گوشی را از روی قلاب برداشتم و رفتم بخوابم. حرف‌هایش هنوز از گوشی شنیده می‌شد.
+  en: I left the phone off the hook and went to bed. Her voice was still coming out of the receiver.
+@move jack x=-100 wait
+@scene black
+narr: آن شب خواب دیدم که با تایلر... نه. خواب دیدم که تایلر با مارلا...
+  en: That night I dreamed that Tyler... no. I dreamed that Tyler and Marla...
+narr: صدایشان تا صبح از طبقه‌ی بالا می‌آمد.
+  en: Their noise came down through the ceiling until morning.
+
+# --- The morning after -----------------------------------------------------
+@music tyler fade=2
+@scene paper_street_kitchen
+@set_loc steam false
+@actor marla look=marla_noglasses x=820 face=l pose=smoke
+@actor jack look=jack_robe x=300 face=r
+@move jack x=520 wait
+@pose jack shrug
+@expr jack shock
+jack: تو این‌جا چه کار می‌کنی؟
+  en: What are you doing here?
+@pose marla smoke
+marla: چی؟
+  en: What?
+jack: این‌جا... در آشپزخانه‌ی ما.
+  en: Here... in our kitchen.
+marla: تو یک آدم عوضیِ کامل هستی، می‌دانستی؟
+  en: You're a real piece of work, you know that?
+@move marla x=1400
+@expr jack none
+narr: تایلر و مارلا. صدایشان تمام شب. اتاق تایلر بالای اتاق من بود.
+  en: Tyler and Marla. All night. Tyler's room was right above mine.
+
+@actor tyler look=tyler_robe x=1300 face=l
+@move tyler x=840 wait
+@expr tyler smirk
+tyler: صبح بخیر.
+  en: Morning.
+jack: مارلا سینگر؟ تو و مارلا؟
+  en: Marla Singer? You and Marla?
+@pose tyler point
+@expr tyler angry
+tyler: یک چیز را بدان. هیچ‌وقت درباره‌ی من با او حرف نزن. هیچ‌وقت.
+  en: Get this straight. You never talk to her about me. Ever.
+tyler: قول بده.
+  en: Promise.
+@choice
+@option promise
+  fa: «قول می‌دهم.»
+  en: "I promise."
+@endchoice
+@label promise
+@expr tyler smirk
+@pose tyler stand
+narr: یک قانون دیگر. این بار قانونِ خودِ تایلر.
+  en: Another rule. Tyler's own.
+
+# --- The clinic ---------------------------------------------------------------
+@music tension fade=2
+@scene clinic_dumpster
+@actor tyler look=tyler x=470 face=r pose=crouch
+@actor jack look=jack_casual x=320 face=r pose=crouch
+
+narr: برای ساختن صابون، اول باید چربی پیدا کنی.
+  en: To make soap, first you render fat.
+tyler: بهترین چربی برای صابون، از آدم‌هاست. و ثروتمندترین چربیِ این کشور، در سطل‌های پشت کلینیک‌های لیپوساکشن است.
+  en: The best fat for soap comes from people. And the richest fat in this country sits in the bins behind liposuction clinics.
+@pose jack shrug
+jack: ما داریم از سطل آشغال چربی آدم‌ها را می‌دزدیم.
+  en: We're stealing people's fat out of a dumpster.
+tyler: می‌گیریم. فرق دارد.
+  en: Collecting. There's a difference.
+
+@qte timing target=3 time=1.2 zone=0.2 actor=jack pose_a=crouch pose_b=hold sfx=splash
+  fa: وقتی نور نگهبان دور شد، کیسه‌ها را بردار.
+  en: When the guard's light swings away, grab the bags.
+
+@pose jack hold
+@prop jack bag
+@pose tyler hold
+@prop tyler bag
+@move jack x=-100
+@move tyler x=-100 wait
+
+# --- The kitchen -----------------------------------------------------------
+@music tyler fade=2
+@scene paper_street_kitchen
+@set_loc steam true
+@actor tyler look=tyler x=760 face=l pose=stir
+@actor jack look=jack_casual x=500 face=r pose=stand
+
+tyler: آدم‌های قدیم فهمیدند اگر لباس‌هایشان را در یک نقطه‌ی خاص رودخانه بشویند، تمیزتر می‌شود. می‌دانی چرا؟
+  en: Ancient people found their clothes got cleaner if they washed them at a certain spot in the river. You know why?
+jack: نه.
+  en: No.
+tyler: بالای رودخانه، روی تپه، آدم‌ها را قربانی می‌کردند. جسدها را می‌سوزاندند. چربی‌شان با خاکستر قاطی می‌شد و به رودخانه می‌ریخت.
+  en: Human sacrifices were made on the hills above the river. The bodies were burned. The fat mixed with the ash and ran down into the water.
+tyler: سود و چربی. صابون.
+  en: Lye and fat. Soap.
+
+@game soap
+
+# --- The kiss ----------------------------------------------------------------
+@music stop fade=0.5
+@actor tyler pose=stand
+@move tyler x=600 wait
+@face tyler jack
+@pose jack hand_out
+@pose tyler hold
+@expr tyler smirk
+tyler: دستت را بده.
+  en: Give me your hand.
+narr: پشت دستم را بوسید. جای لب‌هایش خیس بود و برق می‌زد.
+  en: He kissed the back of my hand. The kiss glistened, wet.
+@prop tyler bottle
+narr: بعد سود سوزآور را رویش ریخت.
+  en: Then he poured the lye on it.
+@sfx sizzle
+@shake 8 t=0.8
+@white red t=0.3
+@expr jack pain
+@hurt jack bruise=0.1
+jack: آآآخ!
+  en: Aaah!
+tyler: این درد توست. این دستِ سوزانِ توست. این‌جاست.
+  en: This is your pain. This is your burning hand. It's right here.
+
+@qte hold time=6 actor=jack sfx=sizzle
+  fa: با درد بمان. به غارت فرار نکن.
+  en: Stay with the pain. Don't run to your cave.
+
+@grade dream t=0
+@wait 0.4
+@grade warm
+tyler: برگرد پیش درد! مثل آن مرده‌ها با آن کنار نیا!
+  en: Come back to the pain! Don't deal with this the way those dead people do!
+@pose tyler point
+tyler: اول باید بدانی، نه این‌که بترسی، بدانی، که یک روز می‌میری.
+  en: First you have to know, not fear, know, that someday you're going to die.
+tyler: فقط بعد از این‌که همه‌چیز را از دست دادیم، آزادیم که هر کاری بکنیم.
+  en: It's only after we've lost everything that we're free to do anything.
+@prop tyler bottle
+narr: بعد سرکه را روی زخم ریخت تا سوختگی متوقف شود.
+  en: Then he poured vinegar on the burn to neutralize it.
+@prop tyler none
+@expr jack none
+narr: جای آن بوسه، تا آخر عمر روی دستم ماند.
+  en: The scar of that kiss stayed on my hand for the rest of my life.
+
+# --- Selling the soap -------------------------------------------------------
+@music groups fade=2
+@scene department_store
+@actor buyer x=860 face=l pose=stand
+@actor tyler look=tyler_shades x=480 face=r pose=present prop=soap
+@actor jack look=jack_coat x=330 face=r pose=stand
+
+buyer: بیست دلار برای هر قالب؟
+  en: Twenty dollars a bar?
+tyler: کاملاً طبیعی. مخصوص پوست‌های حساس.
+  en: All natural. For sensitive skin.
+buyer: باشد. صد تا می‌خواهیم.
+  en: Fine. We'll take a hundred.
+@sfx cash_register
+narr: صابون‌مان را به فروشگاه‌های بزرگ می‌فروختیم. قالبی بیست دلار.
+  en: We sold our soap to department stores. Twenty dollars a bar.
+narr: داشتیم چربیِ ران‌های زن‌های پولدار را، دوباره به خودشان می‌فروختیم.
+  en: We were selling rich women their own fat back to them.
+@expr tyler smirk
+@fade out t=1.5
+@end

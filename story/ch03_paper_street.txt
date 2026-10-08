@@ -1,0 +1,182 @@
+# Chapter 3: Paper Street.
+# The house, Tyler's night jobs, the parking lot crowds, the basement,
+# the rules, and the first real fight.
+
+@black
+@title
+@music insomnia fade=2
+@scene paper_street_ext
+@actor jack look=jack_coat x=1300 face=l
+@actor tyler x=1380 face=l
+@move jack x=820
+@move tyler x=900 wait
+
+narr: تایلر خانه‌ای در خیابان پیپر اجاره کرده بود. نه همسایه‌ای داشت، نه چیزی جز انبارها و یک کارخانه‌ی کاغذ.
+  en: Tyler had rented a house on Paper Street. No neighbours. Nothing but warehouses and a paper mill.
+narr: هیچ‌چیزِ آن خانه کار نمی‌کرد. باران از سقف می‌آمد. برق هر وقت دلش می‌خواست می‌رفت.
+  en: Nothing in that house worked. It rained through the roof. The electricity came and went as it pleased.
+@pose tyler point
+tyler: خوش آمدی.
+  en: Welcome home.
+
+@scene paper_street_int
+@actor jack look=jack_casual x=420 pose=sit face=r prop=catalog
+@actor tyler look=tyler_robe x=900 face=l pose=stand
+
+narr: در زیرزمین، کوهی از مجله‌های قدیمی بود. مقاله‌هایی که در آن‌ها اعضای بدن با اول‌شخص حرف می‌زدند.
+  en: In the basement there were stacks of old magazines. Articles where organs talked about themselves in the first person.
+narr: «من بصل‌النخاع جک هستم.»
+  en: "I am Jack's medulla oblongata."
+narr: «من کولون جک هستم.»
+  en: "I am Jack's colon."
+@pose jack think
+narr: «من مجرای صفرای خشمگینِ جک هستم.»
+  en: "I am Jack's raging bile duct."
+
+@pose tyler talk
+tyler: پدرت تو را بزرگ کرد؟
+  en: Did your dad raise you?
+@pose jack talk
+jack: نه. یعنی... شش‌سالم بود که رفت. یک شهر دیگر، یک خانواده‌ی دیگر. هر شش سال همین کار را می‌کرد.
+  en: No. I mean... he left when I was six. Another city, another family. Every six years he'd do it again.
+tyler: من هم پدرم را نشناختم.
+  en: I never knew my dad either.
+tyler: ما نسلی هستیم از مردهایی که زن‌ها بزرگ‌شان کرده‌اند. نمی‌دانم یک زن دیگر واقعاً جوابی است که لازم داریم یا نه.
+  en: We're a generation of men raised by women. I'm wondering if another woman is really the answer we need.
+
+# --- Tyler's night jobs -----------------------------------------------------
+@music tyler fade=2
+@scene projection_booth
+@actor tyler x=640 face=r pose=stand
+@actor jack look=jack_casual x=300 face=r pose=arms_crossed
+
+narr: تایلر شب‌ها کار می‌کرد. وقتی بقیه خواب بودند.
+  en: Tyler worked nights. While everyone else slept.
+narr: آپاراتچی بود. فیلم‌ها روی چند حلقه‌ی جدا می‌آیند. یک نفر باید وسط فیلم دستگاه‌ها را عوض کند.
+  en: He was a projectionist. A movie doesn't come on one big reel. Someone has to switch projectors in the middle.
+@pose tyler point
+tyler: به آن می‌گویند «تعویض». اگر درست انجامش بدهی، تماشاگر هیچ‌وقت نمی‌فهمد.
+  en: They call it a changeover. Do it right, and the audience never sees a thing.
+tyler: آن نقطه‌های سیاه گوشه‌ی پرده را دیده‌ای؟ در کار ما به آن‌ها می‌گوییم «سوختگی سیگار».
+  en: You ever see those little dots in the corner of the screen? In the trade, we call them cigarette burns.
+@burn
+tyler: اولی یعنی موتور دستگاه دوم را روشن کن. دومی یعنی عوض کن.
+  en: The first one means start the motor on the second projector. The second one means change over.
+tyler: حالا تو امتحان کن.
+  en: Now you try.
+
+@game projector reels=2
+
+@pose tyler hold
+narr: ولی تایلر یک کار دیگر هم می‌کرد. یک تک‌فریم از یک فیلم بزرگسالان را وسط فیلم‌های خانوادگی می‌چسباند.
+  en: But Tyler did something else, too. He spliced single frames of adult films into family movies.
+narr: یک بیست‌وچهارم ثانیه. هیچ‌کس نمی‌فهمد که دیده. ولی یک دختر کوچک در سالن شروع به گریه کرد و نمی‌دانست چرا.
+  en: A twenty-fourth of a second. Nobody knows they saw it. But a little girl in the audience started to cry, and she didn't know why.
+
+@scene hotel_kitchen
+@actor tyler look=tyler_waiter x=560 face=r pose=stir
+narr: تایلر پیشخدمت مهمانی‌های هتل پرسمن هم بود. یک خرابکار چریکی در صنعت خدمات غذایی.
+  en: Tyler also waited banquets at the Pressman Hotel. A guerrilla terrorist of the food-service industry.
+narr: نپرسید با سوپ چه کار می‌کرد.
+  en: Don't ask what he did to the soup.
+@expr tyler smirk
+
+# --- The parking lot fills up ----------------------------------------------
+@music basement fade=2
+@scene lous_parking
+@set_loc crowd 1
+@crowd 0.6
+@actor jack look=jack_fight x=520 face=r pose=guard anim=bounce bruise=0.3
+@actor tyler look=tyler_fight x=760 face=l pose=guard anim=bounce bruise=0.2
+
+narr: بعد از آن شب، هر هفته در پارکینگ پشت بار لو دعوا می‌کردیم.
+  en: After that night, we fought every week in the lot behind Lou's.
+narr: آدم‌ها جمع می‌شدند و نگاه می‌کردند. بعد خودشان هم دعوا می‌خواستند.
+  en: People would gather and watch. Then they wanted to fight, too.
+narr: هفته‌ی بعد، تعدادشان دو برابر شد. یک زیرزمین لازم داشتیم.
+  en: The next week, there were twice as many. We needed a basement.
+
+# --- The basement and the rules --------------------------------------------
+@scene basement_meeting
+@crowd 0.1
+@actor tyler look=tyler x=640 face=r pose=stand
+
+@pose tyler talk_open
+tyler: به فایت کلاب خوش آمدید.
+  en: Welcome to Fight Club.
+tyler: قانون اول فایت کلاب: درباره‌ی فایت کلاب حرف نمی‌زنی.
+  en: The first rule of Fight Club is: you do not talk about Fight Club.
+@face tyler l
+tyler: قانون دوم فایت کلاب: درباره‌ی فایت کلاب حرف نمی‌زنی!
+  en: The second rule of Fight Club is: you DO NOT talk about Fight Club!
+@face tyler r
+@pose tyler point
+tyler: قانون سوم: اگر کسی گفت «بس»، از حال رفت، یا دستش را زمین زد، مبارزه تمام است.
+  en: Third rule of Fight Club: if someone yells stop, goes limp, taps out, the fight is over.
+tyler: قانون چهارم: هر مبارزه فقط دو نفر.
+  en: Fourth rule: only two guys to a fight.
+tyler: قانون پنجم: هر بار فقط یک مبارزه.
+  en: Fifth rule: one fight at a time, fellas.
+tyler: قانون ششم: نه پیراهن، نه کفش.
+  en: Sixth rule: no shirts, no shoes.
+tyler: قانون هفتم: مبارزه تا هر وقت که لازم باشد ادامه پیدا می‌کند.
+  en: Seventh rule: fights will go on as long as they have to.
+@pose tyler stand
+@expr tyler smirk
+tyler: و قانون هشتم و آخر: اگر امشب اولین شب شما در فایت کلاب است... باید مبارزه کنید.
+  en: And the eighth and final rule: if this is your first night at Fight Club... you have to fight.
+@sfx crowd_cheer
+
+@scene basement
+@crowd 0.5
+@actor jack look=jack_fight x=430 face=r pose=guard bruise=0.2
+@actor ricky x=850 look=member1 face=l pose=guard
+narr: هر کسی که فکرش را بکنی آن‌جا بود. پیشخدمت‌ها، مکانیک‌ها، کارمندهای بانک.
+  en: Anyone you can think of was there. Waiters, mechanics, bank clerks.
+narr: کسی که در فایت کلاب بودی، آن کسی نبودی که در بقیه‌ی دنیا بودی.
+  en: Who you were in Fight Club is not who you were in the rest of the world.
+
+@game fight a1=jack a2=ricky l1=jack_fight l2=member1 ai=ricky must_win x1=430 x2=850
+
+@pose jack stand_relaxed
+@anim jack none
+narr: فایت کلاب درباره‌ی برد و باخت نبود. درباره‌ی کلمه‌ها نبود.
+  en: Fight Club wasn't about winning or losing. It wasn't about words.
+narr: جیغ و فریادهای مشتاق، مثل جمع شدنِ آدم‌ها در کلیسا بود.
+  en: The hysterical shouting was in tongues, like at a Pentecostal church.
+narr: بعد از فایت کلاب، بقیه‌ی زندگی صدایش کم می‌شد. می‌توانستی از پسِ همه‌چیز بربیایی.
+  en: After Fight Club, everything else in your life gets the volume turned down. You can deal with anything.
+
+# --- Monday morning ----------------------------------------------------------
+@music insomnia fade=2
+@scene office
+@actor jack look=jack_office x=640 pose=sit face=r bruise=0.6 blood=0.1
+@actor boss x=900 face=l pose=stand
+
+@pose boss present
+boss: خدای من... چه بلایی سرت آمده؟
+  en: Good God... what happened to you?
+@choice
+@option office_a
+  fa: «از پله‌ها افتادم.»
+  en: "I fell down some stairs."
+@option office_b
+  fa: (چیزی نگو. فقط لبخند بزن.)
+  en: (Say nothing. Just smile.)
+@endchoice
+@label office_a
+boss: ...باید بیشتر مواظب باشی.
+  en: ...You should be more careful.
+@goto office_end
+@label office_b
+@expr jack smirk
+boss: ...هر چه هست، نمی‌خواهم بدانم.
+  en: ...Whatever it is, I don't want to know.
+@label office_end
+@move boss x=1350 wait
+narr: قانون اول فایت کلاب.
+  en: The first rule of Fight Club.
+narr: بعد از مدتی، کبودی‌هایم را دوست داشتم. فایت کلاب دلیلی شده بود برای کوتاه کردن مو، برای گرفتن ناخن.
+  en: After a while, I liked my bruises. Fight Club became the reason to cut your hair short, or trim your fingernails.
+@fade out t=1.5
+@end
